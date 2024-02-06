@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Kobliha
+namespace Kobliha { }
 
 public class Class1
 {

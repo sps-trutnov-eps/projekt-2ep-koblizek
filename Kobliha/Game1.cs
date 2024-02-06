@@ -9,6 +9,9 @@ namespace Kobliha
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private int sirkaOkna = 1600;
+        private int vyskaOkna = 900;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -19,6 +22,10 @@ namespace Kobliha
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            _graphics.PreferredBackBufferWidth = sirkaOkna;
+            _graphics.PreferredBackBufferHeight = vyskaOkna;
+            _graphics.ApplyChanges();
+
 
             base.Initialize();
         }
