@@ -6,12 +6,15 @@ namespace Kobliha
 {
     public class Game1 : Game
     {
+        // atributy
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
+        
         private int sirkaOkna = 1600;
         private int vyskaOkna = 900;
+        Koblizek kobliha;
 
+        //konstruktor
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -33,17 +36,17 @@ namespace Kobliha
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            kobliha = new Koblizek(GraphicsDevice, 50, Color.BlueViolet,
+                 Keys.Left, Keys.Right, sirkaOkna, vyskaOkna);
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState klavesnice = Keyboard.GetState();
+            if (klavesnice.IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
-
+            kobliha.PohniSe(klavesnice);
             base.Update(gameTime);
         }
 
@@ -52,7 +55,8 @@ namespace Kobliha
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            kobliha.VykresliSe(_spriteBatch);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }
