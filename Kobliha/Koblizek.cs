@@ -32,7 +32,20 @@ namespace Kobliha
             Color[] pixely = new Color[Velikost * Velikost];
 
             for (int i = 0; i < pixely.Length; i++)
-                pixely[i] = barva;
+            {
+                int x = i % Velikost;
+                int y = i / Velikost;
+
+                int dx = x - Velikost / 2;
+                int dy = y - Velikost / 2;
+
+                int d = (int)System.Math.Sqrt(dx * dx + dy * dy);
+
+                if (d < Velikost / 2)
+                    pixely[i] = barva;
+                else
+                    pixely[i] = Color.Transparent;
+            }
 
             Textura.SetData(pixely);
         }
