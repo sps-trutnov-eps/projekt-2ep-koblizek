@@ -55,7 +55,10 @@ namespace Kobliha
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+
             kobliha.VykresliSe(_spriteBatch);
+            
             _spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -21,6 +21,8 @@ namespace Kobliha
         {
             Velikost = velikost;
 
+            PoziceX = rozmerOknaX / 2;
+            PoziceY = rozmerOknaY - velikost;
 
             OvladaniDoleva = smerDoleva;
             OvladaniDoprava = smerDoprava;
