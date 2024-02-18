@@ -11,6 +11,7 @@ namespace Kobliha
         private int Rychlost { get; set; } = 5;
         private Keys OvladaniDoleva { get; set; }
         private Keys OvladaniDoprava { get; set; }
+        
 
         protected Texture2D Textura { get; set; }
 

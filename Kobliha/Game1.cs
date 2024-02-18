@@ -38,6 +38,7 @@ namespace Kobliha
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 50, Color.BlueViolet,
                  Keys.Left, Keys.Right, sirkaOkna, vyskaOkna);
+            image = Content.Load<Texture>("Koblizek.png");
             // TODO: use this.Content to load your game content here
         }
 
