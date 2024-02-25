@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 namespace Kobliha
 {
 	public class Koblizek
@@ -25,7 +26,7 @@ namespace Kobliha
         private int maxCasLetu = 15; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
 
         //konstruktor
-        public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, Color barva,
+        public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
              Keys smerDoleva, Keys smerDoprava, Keys skok,
              int rozmerOknaX = 0, int rozmerOknaY = 0)
         {
@@ -38,27 +39,12 @@ namespace Kobliha
             OvladaniDoprava = smerDoprava;
             OvladaniSkok = skok;
 
-            Textura = new Texture2D(grafickeZarizeni, Velikost, Velikost);
+            
 
-            Color[] pixely = new Color[Velikost * Velikost];
-
-            for (int i = 0; i < pixely.Length; i++)
+            using (FileStream stream = new FileStream(nazevSouboru, FileMode.Open))
             {
-                int x = i % Velikost;
-                int y = i / Velikost;
-
-                int dx = x - Velikost / 2;
-                int dy = y - Velikost / 2;
-
-                int d = (int)System.Math.Sqrt(dx * dx + dy * dy);
-
-                if (d < Velikost / 2)
-                    pixely[i] = barva;
-                else
-                    pixely[i] = Color.Transparent;
+                Textura = Texture2D.FromStream(grafickeZarizeni, stream);
             }
-
-            Textura.SetData(pixely);
         }
 
         // metody

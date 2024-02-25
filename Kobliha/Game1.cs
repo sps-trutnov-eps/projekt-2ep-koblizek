@@ -37,7 +37,7 @@ namespace Kobliha
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            kobliha = new Koblizek(GraphicsDevice, 50, Color.BlueViolet,
+            kobliha = new Koblizek(GraphicsDevice, 50, "koblizek.png",
                  Keys.Left, Keys.Right, Keys.Up, sirkaOkna, vyskaOkna);
 
             // TODO: use this.Content to load your game content here
