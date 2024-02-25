@@ -14,8 +14,15 @@ namespace Kobliha
         private Keys OvladaniDoleva { get; set; }
         private Keys OvladaniDoprava { get; set; }
         private Keys OvladaniSkok { get; set; }
-
         protected Texture2D Textura { get; set; }
+        
+        private bool naZemi = true;
+        
+        private int vychoziPoziceY;
+
+        private int casLetu = 0;
+
+        private int maxCasLetu = 15; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
 
         //konstruktor
         public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, Color barva,
@@ -61,13 +68,37 @@ namespace Kobliha
                 PoziceX += Rychlost;
             if (stavKlavesnice.IsKeyDown(OvladaniDoleva))
                 PoziceX -= Rychlost;
-            
-            if (stavKlavesnice.IsKeyDown(OvladaniSkok) && !Skace)
+
+            if (stavKlavesnice.IsKeyDown(OvladaniSkok) && naZemi)
             {
-                PoziceY -= SkokSilou;
-                Skace = true;
+                vychoziPoziceY = PoziceY;
+                naZemi = false;
+                casLetu = 0;
             }
-            
+
+            if (!naZemi)
+            {
+                if (casLetu < maxCasLetu)
+                {
+                    // Fáze skoku - postava letí nahoru
+                    PoziceY -= Rychlost;
+                }
+                else
+                {
+                    // Fáze klesání - postava se vrací na zem
+                    PoziceY += Rychlost;
+
+                    // Simulace gravitace - pokud dosáhne nebo překročí původní výšku, znamená to, že dopadla zpět na zem
+                    if (PoziceY >= vychoziPoziceY)
+                    {
+                        PoziceY = vychoziPoziceY;
+                        naZemi = true;
+                    }
+                }
+
+                casLetu++;
+            }
+
         }
 
         public void OmezSvujPohybNa(int levyOkraj, int horniOkraj, int pravyOkraj, int spodniOkraj)
