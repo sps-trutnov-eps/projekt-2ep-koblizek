@@ -24,7 +24,10 @@ namespace Kobliha
         private int casLetu = 0;
 
         private int maxCasLetu = 15; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
+        
+        private bool jeOtocenyDoprava = false;
 
+        private float RychlostKutaleni { get; set; } = 1.0f;
         //konstruktor
         public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
              Keys smerDoleva, Keys smerDoprava, Keys skok,
@@ -50,10 +53,25 @@ namespace Kobliha
         // metody
         public void PohniSe(KeyboardState stavKlavesnice)
         {
+            
             if (stavKlavesnice.IsKeyDown(OvladaniDoprava))
+            {
                 PoziceX += Rychlost;
-            if (stavKlavesnice.IsKeyDown(OvladaniDoleva))
+                RychlostKutaleni = 1.0f; // Kutálení doprava
+                jeOtocenyDoprava = true;
+            }
+            else if (stavKlavesnice.IsKeyDown(OvladaniDoleva))
+            {
                 PoziceX -= Rychlost;
+                RychlostKutaleni = -1.0f; // Kutálení doleva
+                jeOtocenyDoprava = false;
+            }
+
+
+
+
+
+
 
             if (stavKlavesnice.IsKeyDown(OvladaniSkok) && naZemi)
             {
@@ -98,7 +116,18 @@ namespace Kobliha
 
         public void VykresliSe(SpriteBatch vykreslovaciDavka)
         {
-            vykreslovaciDavka.Draw(Textura, new Rectangle(PoziceX, PoziceY, Velikost, Velikost), Color.White);
+            SpriteEffects efekt = jeOtocenyDoprava ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+            vykreslovaciDavka.Draw(
+                Textura,
+                new Rectangle(PoziceX, PoziceY, Velikost, Velikost),
+                null,
+                Color.White,
+                0f,
+                Vector2.Zero,
+                efekt,
+                0f
+            );
         }
 
     }
