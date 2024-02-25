@@ -9,15 +9,17 @@ namespace Kobliha
         private int PoziceX { get; set; }
         private int PoziceY { get; set; }
         private int Rychlost { get; set; } = 5;
+        private int SkokSilou { get; set; } = 15;
+        private bool Skace { get; set; } = false;
         private Keys OvladaniDoleva { get; set; }
         private Keys OvladaniDoprava { get; set; }
-        
+        private Keys OvladaniSkok { get; set; }
 
         protected Texture2D Textura { get; set; }
 
         //konstruktor
         public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, Color barva,
-             Keys smerDoleva, Keys smerDoprava,
+             Keys smerDoleva, Keys smerDoprava, Keys skok,
              int rozmerOknaX = 0, int rozmerOknaY = 0)
         {
             Velikost = velikost;
@@ -27,6 +29,7 @@ namespace Kobliha
 
             OvladaniDoleva = smerDoleva;
             OvladaniDoprava = smerDoprava;
+            OvladaniSkok = skok;
 
             Textura = new Texture2D(grafickeZarizeni, Velikost, Velikost);
 
@@ -58,7 +61,13 @@ namespace Kobliha
                 PoziceX += Rychlost;
             if (stavKlavesnice.IsKeyDown(OvladaniDoleva))
                 PoziceX -= Rychlost;
-
+            
+            if (stavKlavesnice.IsKeyDown(OvladaniSkok) && !Skace)
+            {
+                PoziceY -= SkokSilou;
+                Skace = true;
+            }
+            
         }
 
         public void OmezSvujPohybNa(int levyOkraj, int horniOkraj, int pravyOkraj, int spodniOkraj)

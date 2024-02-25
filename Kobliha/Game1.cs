@@ -9,6 +9,7 @@ namespace Kobliha
         // atributy
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Texture2D _texture;
         
         private int sirkaOkna = 1600;
         private int vyskaOkna = 900;
@@ -37,8 +38,8 @@ namespace Kobliha
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 50, Color.BlueViolet,
-                 Keys.Left, Keys.Right, sirkaOkna, vyskaOkna);
-            image = Content.Load<Texture>("Koblizek.png");
+                 Keys.Left, Keys.Right, Keys.Up, sirkaOkna, vyskaOkna);
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -59,6 +60,7 @@ namespace Kobliha
             _spriteBatch.Begin();
 
             kobliha.VykresliSe(_spriteBatch);
+
             
             _spriteBatch.End();
             base.Draw(gameTime);
