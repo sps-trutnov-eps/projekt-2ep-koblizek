@@ -26,8 +26,9 @@ namespace Kobliha
         private int maxCasLetu = 15; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
         
         private bool jeOtocenyDoprava = false;
-
+        private float UhelRotace { get; set; } = 0f;
         private float RychlostKutaleni { get; set; } = 1.0f;
+        private float RychlostRotace { get; set; } = 5f;
         //konstruktor
         public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
              Keys smerDoleva, Keys smerDoprava, Keys skok,
@@ -53,17 +54,17 @@ namespace Kobliha
         // metody
         public void PohniSe(KeyboardState stavKlavesnice)
         {
-            
+
             if (stavKlavesnice.IsKeyDown(OvladaniDoprava))
             {
                 PoziceX += Rychlost;
-                RychlostKutaleni = 1.0f; // Kutálení doprava
+                UhelRotace += RychlostRotace; // Otáčení doleva
                 jeOtocenyDoprava = true;
             }
             else if (stavKlavesnice.IsKeyDown(OvladaniDoleva))
             {
                 PoziceX -= Rychlost;
-                RychlostKutaleni = -1.0f; // Kutálení doleva
+                UhelRotace -= RychlostRotace; // Otáčení doprava
                 jeOtocenyDoprava = false;
             }
 
@@ -105,7 +106,7 @@ namespace Kobliha
 
         }
 
-        public void OmezSvujPohybNa(int levyOkraj, int horniOkraj, int pravyOkraj, int spodniOkraj)
+        public void OmezSvujPohybNa(int levyOkraj, int pravyOkraj)
         {
             if (PoziceX < levyOkraj)
                 PoziceX = levyOkraj;
@@ -120,14 +121,15 @@ namespace Kobliha
 
             vykreslovaciDavka.Draw(
                 Textura,
-                new Rectangle(PoziceX, PoziceY, Velikost, Velikost),
+                new Vector2(PoziceX + Velikost / 2, PoziceY + Velikost / 2),
                 null,
                 Color.White,
-                0f,
-                Vector2.Zero,
+                MathHelper.ToRadians(UhelRotace),
+                new Vector2(Textura.Width / 2, Textura.Height / 2),
+                0.8f,
                 efekt,
                 0f
-            );
+               );
         }
 
     }
