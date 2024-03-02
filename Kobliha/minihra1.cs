@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kobliha
 {
-    internal class minihra1
+    public class minihra1
     {
     
     }
