@@ -8,6 +8,6 @@ namespace Kobliha
 {
     public class minihra1
     {
-    
+    //cau udelej minihru nebo uvidis ducha dik
     }
 }
