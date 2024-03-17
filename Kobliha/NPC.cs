@@ -21,7 +21,7 @@ namespace Kobliha
             int rozmerOknaX = 0, int rozmerOknaY = 0)
         {
             Velikost = velikost;
-            Pozice = new Vector2(rozmerOknaX / 2, rozmerOknaY - velikost);
+            Pozice = new Vector2(rozmerOknaX / 3, rozmerOknaY -150);
 
 
 
