@@ -7,8 +7,9 @@ namespace Kobliha
 	public class Koblizek
 	{
         protected int Velikost { get; set; }
-        private int PoziceX { get; set; }
-        private int PoziceY { get; set; }
+        public int PoziceX { get; set; }
+        public int PoziceY { get; set; }
+        public Vector2 Pozice { get; set; }
         private int Rychlost { get; set; } = 5;
         private int SkokSilou { get; set; } = 15;
         private bool Skace { get; set; } = false;

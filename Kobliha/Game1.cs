@@ -53,6 +53,22 @@ namespace Kobliha
                 Exit();
             kobliha.PohniSe(klavesnice);
             base.Update(gameTime);
+        
+            if (kobliha.PoziceX > sirkaOkna)
+            {
+                kobliha.PoziceX = -50;
+            }
+            if (kobliha.PoziceX < -50)
+            {
+                kobliha.PoziceX = sirkaOkna;
+            }
+
+
+
+
+
+
+
         }
 
         protected override void Draw(GameTime gameTime)
