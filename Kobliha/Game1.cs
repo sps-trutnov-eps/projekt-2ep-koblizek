@@ -13,6 +13,7 @@ namespace Kobliha
         
         private int sirkaOkna = 1600;
         private int vyskaOkna = 900;
+        private int cislo_obrazovky = 1;
         Koblizek kobliha;
         NPC dedek;
 
@@ -54,17 +55,28 @@ namespace Kobliha
             kobliha.PohniSe(klavesnice);
             base.Update(gameTime);
         
+            if (cislo_obrazovky > 1)
+            {
+                if (kobliha.PoziceX < -50)
+                {
+                    kobliha.PoziceX = sirkaOkna;
+                    cislo_obrazovky -= 1;
+                }
+            }
+            
             if (kobliha.PoziceX > sirkaOkna)
             {
                 kobliha.PoziceX = -50;
+                cislo_obrazovky += 1;
             }
-            if (kobliha.PoziceX < -50)
+
+            if (cislo_obrazovky == 1)
             {
-                kobliha.PoziceX = sirkaOkna;
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
             }
-
-
-
 
 
 
