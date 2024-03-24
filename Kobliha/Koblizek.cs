@@ -69,12 +69,6 @@ namespace Kobliha
                 jeOtocenyDoprava = false;
             }
 
-
-
-
-
-
-
             if (stavKlavesnice.IsKeyDown(OvladaniSkok) && naZemi)
             {
                 vychoziPoziceY = PoziceY;
@@ -101,10 +95,8 @@ namespace Kobliha
                         naZemi = true;
                     }
                 }
-
                 casLetu++;
             }
-
         }
 
         public void OmezSvujPohybNa(int levyOkraj, int pravyOkraj)
@@ -132,6 +124,5 @@ namespace Kobliha
                 0f
                );
         }
-
     }
 }

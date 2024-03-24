@@ -23,7 +23,7 @@ namespace Kobliha
             Velikost = velikost;
             Pozice = new Vector2(rozmerOknaX / 3, rozmerOknaY -150);
 
-
+            //nwm uz na to jebu musis to tady udelat neco kamo nwm jdu si udelat komut z tohodle komentare takze se mej pekne a peace OUT!
 
             using (FileStream stream = new FileStream(nazevSouboru, FileMode.Open))
             {
