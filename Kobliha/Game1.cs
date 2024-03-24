@@ -40,7 +40,7 @@ namespace Kobliha
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
-                 Keys.Left, Keys.Right, Keys.Up, sirkaOkna, vyskaOkna);
+                 Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
 
             dedek = new NPC(GraphicsDevice, 100, "dedek.png",
                 sirkaOkna, vyskaOkna);
@@ -77,10 +77,6 @@ namespace Kobliha
                     kobliha.PoziceX = 0;
                 }
             }
-
-
-
-
         }
 
         protected override void Draw(GameTime gameTime)
