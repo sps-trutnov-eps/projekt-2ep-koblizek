@@ -18,10 +18,10 @@ namespace Kobliha
         protected Texture2D Textura { get; set; }
 
         public NPC(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
-            int rozmerOknaX = 0, int rozmerOknaY = 0)
+            int poziceX = 0, int poziceY = 0)
         {
             Velikost = velikost;
-            Pozice = new Vector2(rozmerOknaX / 3, rozmerOknaY -150);
+            Pozice = new Vector2(poziceX, poziceY);
 
 
             using (FileStream stream = new FileStream(nazevSouboru, FileMode.Open))
