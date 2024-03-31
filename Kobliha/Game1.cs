@@ -15,7 +15,7 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         Koblizek kobliha;
-        NPC dedek, babka;
+        NPC dedek, babka, vlk;
        
         //konstruktor
         public Game1()
@@ -47,6 +47,9 @@ namespace Kobliha
 
             babka = new NPC(GraphicsDevice, 100, "babka.png",
                 50, vyskaOkna - 150);
+
+            vlk = new NPC(GraphicsDevice, 100, "vlk.png",
+                1200, vyskaOkna - 160);
             // TODO: use this.Content to load your game content here
         }
 
@@ -92,6 +95,7 @@ namespace Kobliha
             
             dedek.VykresliSe(_spriteBatch);
             babka.VykresliSe(_spriteBatch);
+            vlk.VykresliSe(_spriteBatch);
             kobliha.VykresliSe(_spriteBatch);
 
             _spriteBatch.End();
