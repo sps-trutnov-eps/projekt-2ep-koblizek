@@ -42,7 +42,7 @@ namespace Kobliha
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
                  Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
-            if (cislo_obrazovky == 1) ; //toto je takova vec ktera me mrda do prdelky
+            if (cislo_obrazovky == 1) ; //toto je takova vec ktera me mrda do prdelky, toe blbý
             {
                 dedek = new NPC(GraphicsDevice, 100, "dedek.png",
                     125, vyskaOkna - 150);
