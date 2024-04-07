@@ -41,15 +41,21 @@ namespace Kobliha
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
                  Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
+            if (cislo_obrazovky == 1) ;
+            {
+                dedek = new NPC(GraphicsDevice, 100, "dedek.png",
+                    125, vyskaOkna - 150);
 
-            dedek = new NPC(GraphicsDevice, 100, "dedek.png",
-                125 , vyskaOkna - 150);
+                babka = new NPC(GraphicsDevice, 100, "babka.png",
+                    50, vyskaOkna - 150);
+            }
 
-            babka = new NPC(GraphicsDevice, 100, "babka.png",
-                50, vyskaOkna - 150);
-
-            vlk = new NPC(GraphicsDevice, 100, "vlk.png",
+            if (cislo_obrazovky == 2) ;
+            {
+                vlk = new NPC(GraphicsDevice, 100, "vlk.png",
                 1200, vyskaOkna - 160);
+            }
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -92,10 +98,15 @@ namespace Kobliha
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            
-            dedek.VykresliSe(_spriteBatch);
-            babka.VykresliSe(_spriteBatch);
+            if (cislo_obrazovky == 1);
+            {
+                dedek.VykresliSe(_spriteBatch);
+                babka.VykresliSe(_spriteBatch);
+            }
+            if (cislo_obrazovky == 2);
+            {
             vlk.VykresliSe(_spriteBatch);
+            }
             kobliha.VykresliSe(_spriteBatch);
 
             _spriteBatch.End();
