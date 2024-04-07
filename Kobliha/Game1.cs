@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Kobliha
 {
@@ -41,7 +42,7 @@ namespace Kobliha
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
                  Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
-            if (cislo_obrazovky == 1) ;
+            if (cislo_obrazovky == 1) ; //toto je takova vec ktera me mrda do prdelky
             {
                 dedek = new NPC(GraphicsDevice, 100, "dedek.png",
                     125, vyskaOkna - 150);
@@ -75,7 +76,7 @@ namespace Kobliha
                     cislo_obrazovky -= 1;
                 }
             }
-            
+            Console.WriteLine(cislo_obrazovky);
             if (kobliha.PoziceX > sirkaOkna)
             {
                 kobliha.PoziceX = -50;
@@ -90,7 +91,7 @@ namespace Kobliha
                 }
             }
         }
-
+        
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -105,8 +106,10 @@ namespace Kobliha
             }
             if (cislo_obrazovky == 2);
             {
-            vlk.VykresliSe(_spriteBatch);
+                vlk.VykresliSe(_spriteBatch);
+                
             }
+            
             kobliha.VykresliSe(_spriteBatch);
 
             _spriteBatch.End();
