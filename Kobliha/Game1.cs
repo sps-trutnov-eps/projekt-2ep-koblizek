@@ -37,6 +37,24 @@ namespace Kobliha
             base.Initialize();
         }
 
+
+        private void InterakceSVlkem()
+        {
+            Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
+            Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
+
+            // Pokud se obdélníky hráče a vlka překrývají (kolize)
+            if (hrac.Intersects(vlkObdelnik))
+            {
+                // Zde nastavíme, že se nad vlkem objeví text "baf"
+                vlk.Nadpis = "baf";
+            }
+            else
+            {
+                // Pokud hráč není v kolizi s vlkem, skryj text
+                vlk.Nadpis = "";
+            }
+        }
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -67,7 +85,11 @@ namespace Kobliha
                 Exit();
             kobliha.PohniSe(klavesnice);
             base.Update(gameTime);
-        
+
+            kobliha.PohniSe(klavesnice);
+            InterakceSVlkem(); // Zde zavolej metodu pro interakci s vlkem
+            base.Update(gameTime);
+
             if (cislo_obrazovky > 1)
             {
                 if (kobliha.PoziceX < -50)
