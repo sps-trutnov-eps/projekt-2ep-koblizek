@@ -11,7 +11,7 @@ namespace Kobliha
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D _texture;
-        
+        private SpriteFont spriteFont;
         private int sirkaOkna = 1600;
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
@@ -42,10 +42,11 @@ namespace Kobliha
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteFont = Content.Load<SpriteFont>("Arial");
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
             
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
-            if (cislo_obrazovky == 1) ; //toto je takova vec ktera me mrda do prdelky, toe blbý, ale fakt hodne
+            if (cislo_obrazovky == 1) ; 
             {
                 dedek = new NPC(GraphicsDevice, 100, "dedek.png",
                     125, vyskaOkna - 150);
