@@ -31,6 +31,12 @@ namespace Kobliha
         private float RychlostKutaleni { get; set; } = 1.0f;
         private float RychlostRotace { get; set; } = 5f;
         //konstruktor
+
+        public Rectangle GetRectangle()
+        {
+            // Vrátí obdélník reprezentující pozici a velikost hráče (kobližku)
+            return new Rectangle((int)PoziceX, (int)PoziceY, Velikost, Velikost);
+        }
         public Koblizek(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
              Keys smerDoleva, Keys smerDoprava, Keys skok,
              int rozmerOknaX = 0, int rozmerOknaY = 0)

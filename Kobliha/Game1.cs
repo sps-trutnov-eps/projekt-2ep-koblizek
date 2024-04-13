@@ -38,28 +38,13 @@ namespace Kobliha
         }
 
 
-        private void InterakceSVlkem()
-        {
-            Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
-            Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
-
-            // Pokud se obdélníky hráče a vlka překrývají (kolize)
-            if (hrac.Intersects(vlkObdelnik))
-            {
-                // Zde nastavíme, že se nad vlkem objeví text "baf"
-                vlk.Nadpis = "baf";
-            }
-            else
-            {
-                // Pokud hráč není v kolizi s vlkem, skryj text
-                vlk.Nadpis = "";
-            }
-        }
+        
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
-                 Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
+            
+            Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
             if (cislo_obrazovky == 1) ; //toto je takova vec ktera me mrda do prdelky, toe blbý, ale fakt hodne
             {
                 dedek = new NPC(GraphicsDevice, 100, "dedek.png",
@@ -76,6 +61,23 @@ namespace Kobliha
             }
 
             // TODO: use this.Content to load your game content here
+        }
+        private void InterakceSVlkem()
+        {
+            Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
+            Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
+
+            // Pokud se obdélníky hráče a vlka překrývají (kolize)
+            if (hrac.Intersects(vlkObdelnik))
+            {
+                // Zde nastavíme, že se nad vlkem objeví text "baf"
+                vlk.Nadpis = "baf";
+            }
+            else
+            {
+                // Pokud hráč není v kolizi s vlkem, skryj text
+                vlk.Nadpis = "";
+            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -118,20 +120,18 @@ namespace Kobliha
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            if (cislo_obrazovky == 1);
+            dedek.VykresliSe(_spriteBatch);
+            babka.VykresliSe(_spriteBatch);
+
+            // Vykresli text nad vlkem, pokud má nastavený nadpis
+            if (!string.IsNullOrEmpty(vlk.Nadpis))
             {
-                dedek.VykresliSe(_spriteBatch);
-                babka.VykresliSe(_spriteBatch);
+                Vector2 poziceNadpisu = new Vector2(vlk.PoziceX, vlk.PoziceY - 20); // Nastav vhodnou pozici nadpisu
+                _spriteBatch.DrawString(spriteFont, vlk.Nadpis, poziceNadpisu, Color.White);
             }
-            if (cislo_obrazovky == 2);
-            {
-                vlk.VykresliSe(_spriteBatch);
-                
-            }
-            
+
             kobliha.VykresliSe(_spriteBatch);
 
             _spriteBatch.End();
