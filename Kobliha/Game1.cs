@@ -44,22 +44,17 @@ namespace Kobliha
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = Content.Load<SpriteFont>("Arial");
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
-            
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
-            if (cislo_obrazovky == 1)  
-            //{
-                dedek = new NPC(GraphicsDevice, 100, "dedek.png",
+            
+            dedek = new NPC(GraphicsDevice, 100, "dedek.png",
                     125, vyskaOkna - 150);
 
-                babka = new NPC(GraphicsDevice, 100, "babka.png",
+            babka = new NPC(GraphicsDevice, 100, "babka.png",
                     50, vyskaOkna - 150);
-            //}
 
-            //if (cislo_obrazovky == 2) 
-            //{
-                vlk = new NPC(GraphicsDevice, 100, "vlk.png",
+            vlk = new NPC(GraphicsDevice, 100, "vlk.png",
                 1200, vyskaOkna - 160);
-            //}
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -98,9 +93,26 @@ namespace Kobliha
                     kobliha.PoziceX = 0;
                 }
             }
-        
-        //private void InterakceSVlkem()
-        //{
+
+            if (cislo_obrazovky == 1)
+            {
+                dedek.PoziceY = vyskaOkna - 150;
+                babka.PoziceY = vyskaOkna - 150;
+            }
+            else
+            {
+                dedek.PoziceY = -500;
+                babka.PoziceY = -500;
+            }
+            if (cislo_obrazovky == 2)
+            {
+                vlk.PoziceY = vyskaOkna - 160;
+            }
+            else
+            {
+                vlk.PoziceY = -500;
+            }
+            //{
             Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
             Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
 
@@ -109,11 +121,13 @@ namespace Kobliha
             {
                 // Zde nastavíme, že se nad vlkem objeví text "baf"
                 vlk.Nadpis = "baf";
+                Console.WriteLine("Kolize mezi hráčem a vlkem!");
             }
             else
             {
                 // Pokud hráč není v kolizi s vlkem, skryj text
                 vlk.Nadpis = "";
+                Console.WriteLine("Hráč a vlk se nepřekrývají.");
             }
         //}
         }
