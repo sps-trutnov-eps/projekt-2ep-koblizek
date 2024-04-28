@@ -16,7 +16,7 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         Koblizek kobliha;
-        NPC dedek, babka, vlk, zajic;
+        NPC dedek, babka, vlk, zajic, medved;
        
         //konstruktor
         public Game1()
@@ -57,6 +57,9 @@ namespace Kobliha
 
             zajic = new NPC(GraphicsDevice, 100, "zajic.png",
                 1200, vyskaOkna - 160);
+            
+            medved = new NPC(GraphicsDevice, 100, "meda.png",
+                1200, vyskaOkna - 260);
 
 
             // TODO: use this.Content to load your game content here
@@ -97,24 +100,7 @@ namespace Kobliha
                 }
             }
 
-            if (cislo_obrazovky == 1)
-            {
-                dedek.PoziceY = vyskaOkna - 150;
-                babka.PoziceY = vyskaOkna - 150;
-            }
-            else
-            {
-                dedek.PoziceY = -500;
-                babka.PoziceY = -500;
-            }
-            if (cislo_obrazovky == 2)
-            {
-                vlk.PoziceY = vyskaOkna - 160;
-            }
-            else
-            {
-                vlk.PoziceY = -500;
-            }
+           
             //{
             Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
             Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
@@ -155,12 +141,17 @@ namespace Kobliha
             {
                 zajic.VykresliSe(_spriteBatch);
             }
+
+            if (cislo_obrazovky == 4)
+            {
+                medved.VykresliSe(_spriteBatch);
+            }
             // Vykresli text nad vlkem, pokud má nastavený nadpis
-         //   if (!string.IsNullOrEmpty(vlk.Nadpis))
-          //  {
-          //      Vector2 poziceNadpisu = new Vector2(vlk.PoziceX, vlk.PoziceY - 20); // Nastav vhodnou pozici nadpisu
-          //      _spriteBatch.DrawString(spriteFont, vlk.Nadpis, poziceNadpisu, Color.White);
-          //  }
+            //   if (!string.IsNullOrEmpty(vlk.Nadpis))
+            //  {
+            //      Vector2 poziceNadpisu = new Vector2(vlk.PoziceX, vlk.PoziceY - 20); // Nastav vhodnou pozici nadpisu
+            //      _spriteBatch.DrawString(spriteFont, vlk.Nadpis, poziceNadpisu, Color.White);
+            //  }
 
             kobliha.VykresliSe(_spriteBatch);
 
