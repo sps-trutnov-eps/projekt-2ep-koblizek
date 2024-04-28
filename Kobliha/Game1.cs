@@ -16,7 +16,7 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         Koblizek kobliha;
-        NPC dedek, babka, vlk;
+        NPC dedek, babka, vlk, zajic;
        
         //konstruktor
         public Game1()
@@ -53,6 +53,9 @@ namespace Kobliha
                     50, vyskaOkna - 150);
 
             vlk = new NPC(GraphicsDevice, 100, "vlk.png",
+                1200, vyskaOkna - 160);
+
+            zajic = new NPC(GraphicsDevice, 100, "zajic.png",
                 1200, vyskaOkna - 160);
 
 
@@ -143,9 +146,14 @@ namespace Kobliha
                 babka.VykresliSe(_spriteBatch);
             }
 
-            if (cislo_obrazovky == 2)
+            if (cislo_obrazovky == 3)
             {
                 vlk.VykresliSe(_spriteBatch);
+            }
+            
+            if (cislo_obrazovky == 2)
+            {
+                zajic.VykresliSe(_spriteBatch);
             }
             // Vykresli text nad vlkem, pokud má nastavený nadpis
          //   if (!string.IsNullOrEmpty(vlk.Nadpis))
