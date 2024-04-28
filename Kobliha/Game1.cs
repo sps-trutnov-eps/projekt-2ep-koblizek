@@ -42,7 +42,7 @@ namespace Kobliha
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            spriteFont = Content.Load<SpriteFont>("Arial");
+            
             kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
             
@@ -137,15 +137,22 @@ namespace Kobliha
 
             _spriteBatch.Begin();
 
-            dedek.VykresliSe(_spriteBatch);
-            babka.VykresliSe(_spriteBatch);
-            vlk.VykresliSe(_spriteBatch);
-            // Vykresli text nad vlkem, pokud má nastavený nadpis
-            if (!string.IsNullOrEmpty(vlk.Nadpis))
+            if (cislo_obrazovky == 1)
             {
-                Vector2 poziceNadpisu = new Vector2(vlk.PoziceX, vlk.PoziceY - 20); // Nastav vhodnou pozici nadpisu
-                _spriteBatch.DrawString(spriteFont, vlk.Nadpis, poziceNadpisu, Color.White);
+                dedek.VykresliSe(_spriteBatch);
+                babka.VykresliSe(_spriteBatch);
             }
+
+            if (cislo_obrazovky == 2)
+            {
+                vlk.VykresliSe(_spriteBatch);
+            }
+            // Vykresli text nad vlkem, pokud má nastavený nadpis
+         //   if (!string.IsNullOrEmpty(vlk.Nadpis))
+          //  {
+          //      Vector2 poziceNadpisu = new Vector2(vlk.PoziceX, vlk.PoziceY - 20); // Nastav vhodnou pozici nadpisu
+          //      _spriteBatch.DrawString(spriteFont, vlk.Nadpis, poziceNadpisu, Color.White);
+          //  }
 
             kobliha.VykresliSe(_spriteBatch);
 
