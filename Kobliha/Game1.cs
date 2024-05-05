@@ -103,27 +103,30 @@ namespace Kobliha
                 }
             }
 
-            //pohyb šulínků
+            if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 10)
+            {
+                kobliha.PoziceX = 300;
+            }
             
 
 
                 //{
-            Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
-            Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
+            //Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
+            //Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
 
             // Pokud se obdélníky hráče a vlka překrývají (kolize)
-            if (hrac.Intersects(vlkObdelnik))
-            {
+            //if (hrac.Intersects(vlkObdelnik))
+            //{
                 // Zde nastavíme, že se nad vlkem objeví text "baf"
-                vlk.Nadpis = "baf";
-                Console.WriteLine("Kolize mezi hráčem a vlkem!");
-            }
-            else
-            {
+            //    vlk.Nadpis = "baf";
+            //    Console.WriteLine("Kolize mezi hráčem a vlkem!");
+           // }
+           // else
+           // {
                 // Pokud hráč není v kolizi s vlkem, skryj text
-                vlk.Nadpis = "";
-                Console.WriteLine("Hráč a vlk se nepřekrývají.");
-            }
+           //     vlk.Nadpis = "";
+           //     Console.WriteLine("Hráč a vlk se nepřekrývají.");
+           // }
             //}
         }
         protected override void Draw(GameTime gameTime)
