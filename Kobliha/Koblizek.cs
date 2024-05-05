@@ -10,7 +10,8 @@ namespace Kobliha
         public int PoziceX { get; set; }
         public int PoziceY { get; set; }
         public Vector2 Pozice { get; set; }
-        private int Rychlost { get; set; } = 5;
+        private int Rychlost { get; set; } = 4;
+        private int RychlostSkoku { get; set; } = 5;
         private int SkokSilou { get; set; } = 15;
         private bool Skace { get; set; } = false;
         private Keys OvladaniDoleva { get; set; }
@@ -24,11 +25,11 @@ namespace Kobliha
 
         private int casLetu = 0;
 
-        private int maxCasLetu = 15; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
+        private int maxCasLetu = 20; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
         
         private bool jeOtocenyDoprava = false;
         private float UhelRotace { get; set; } = 0f;
-        private float RychlostKutaleni { get; set; } = 1.0f;
+        private float RychlostKutaleni { get; set; } = 0.2f;
         private float RychlostRotace { get; set; } = 5f;
         //konstruktor
 
@@ -87,12 +88,12 @@ namespace Kobliha
                 if (casLetu < maxCasLetu)
                 {
                     // Fáze skoku - postava letí nahoru
-                    PoziceY -= Rychlost;
+                    PoziceY -= RychlostSkoku;
                 }
                 else
                 {
                     // Fáze klesání - postava se vrací na zem
-                    PoziceY += Rychlost;
+                    PoziceY += RychlostSkoku;
 
                     // Simulace gravitace - pokud dosáhne nebo překročí původní výšku, znamená to, že dopadla zpět na zem
                     if (PoziceY >= vychoziPoziceY)

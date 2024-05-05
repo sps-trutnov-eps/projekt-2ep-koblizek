@@ -31,7 +31,6 @@ namespace Kobliha
             Velikost = velikost;
             Pozice = new Vector2(poziceX, poziceY);
 
-
             using (FileStream stream = new FileStream(nazevSouboru, FileMode.Open))
             {
                 Textura = Texture2D.FromStream(grafickeZarizeni, stream);

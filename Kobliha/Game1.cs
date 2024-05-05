@@ -103,8 +103,11 @@ namespace Kobliha
                 }
             }
 
-           
-            //{
+            //pohyb šulínků
+            
+
+
+                //{
             Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
             Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
 
@@ -121,7 +124,7 @@ namespace Kobliha
                 vlk.Nadpis = "";
                 Console.WriteLine("Hráč a vlk se nepřekrývají.");
             }
-        //}
+            //}
         }
         protected override void Draw(GameTime gameTime)
         {
