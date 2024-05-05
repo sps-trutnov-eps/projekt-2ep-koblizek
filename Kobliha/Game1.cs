@@ -51,11 +51,11 @@ namespace Kobliha
 
             babka = new NPC(GraphicsDevice, 100, "babka.png",
                     50, vyskaOkna - 150);
-
-            vlk = new NPC(GraphicsDevice, 100, "vlk.png",
-                1200, vyskaOkna - 160);
-
+            
             zajic = new NPC(GraphicsDevice, 100, "zajic.png",
+                1200, vyskaOkna - 160);
+            
+            vlk = new NPC(GraphicsDevice, 100, "vlk.png",
                 1200, vyskaOkna - 160);
             
             medved = new NPC(GraphicsDevice, 100, "meda.png",
@@ -79,7 +79,14 @@ namespace Kobliha
             kobliha.PohniSe(klavesnice);
             //InterakceSVlkem(); // Zde zavolej metodu pro interakci s vlkem
             base.Update(gameTime);
-
+            dedek.PoziceX = 125;
+            babka.PoziceX = 50;
+            zajic.PoziceX = 1200;
+            vlk.PoziceX = 1200;
+            medved.PoziceX = 1200;
+            liska.PoziceX = 1200;
+            Console.WriteLine(vlk.PoziceX);
+            
             if (cislo_obrazovky > 1)
             {
                 if (kobliha.PoziceX < -50)
@@ -88,7 +95,7 @@ namespace Kobliha
                     cislo_obrazovky -= 1;
                 }
             }
-            Console.WriteLine(cislo_obrazovky);
+            
             if (kobliha.PoziceX > sirkaOkna)
             {
                 kobliha.PoziceX = -50;
@@ -103,30 +110,50 @@ namespace Kobliha
                 }
             }
 
-            if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 10)
+            if (cislo_obrazovky == 1)
             {
-                kobliha.PoziceX = 300;
+                if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 10)
+                {
+                    kobliha.PoziceX = 300;
+                }
             }
-            
 
+            if (cislo_obrazovky == 2)
+            {
 
-                //{
+            }
+
+            if (cislo_obrazovky == 3)
+            {
+
+            }
+
+            if (cislo_obrazovky == 4)
+            {
+
+            }
+
+            if (cislo_obrazovky == 5)
+            {
+
+            }
+            //{
             //Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
             //Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
 
             // Pokud se obdélníky hráče a vlka překrývají (kolize)
             //if (hrac.Intersects(vlkObdelnik))
             //{
-                // Zde nastavíme, že se nad vlkem objeví text "baf"
+            // Zde nastavíme, že se nad vlkem objeví text "baf"
             //    vlk.Nadpis = "baf";
             //    Console.WriteLine("Kolize mezi hráčem a vlkem!");
-           // }
-           // else
-           // {
-                // Pokud hráč není v kolizi s vlkem, skryj text
-           //     vlk.Nadpis = "";
-           //     Console.WriteLine("Hráč a vlk se nepřekrývají.");
-           // }
+            // }
+            // else
+            // {
+            // Pokud hráč není v kolizi s vlkem, skryj text
+            //     vlk.Nadpis = "";
+            //     Console.WriteLine("Hráč a vlk se nepřekrývají.");
+            // }
             //}
         }
         protected override void Draw(GameTime gameTime)

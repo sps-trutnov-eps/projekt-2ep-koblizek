@@ -26,7 +26,7 @@ namespace Kobliha
         }
 
         public NPC(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
-            int poziceX = 0, int poziceY = 0)
+            int poziceX, int poziceY)
         {
             Velikost = velikost;
             Pozice = new Vector2(poziceX, poziceY);
