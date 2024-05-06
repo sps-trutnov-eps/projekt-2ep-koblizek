@@ -16,7 +16,7 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         Koblizek kobliha;
-        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3;
+        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4;
        
         //konstruktor
         public Game1()
@@ -73,6 +73,9 @@ namespace Kobliha
             stop3 = new NPC(GraphicsDevice, 100, "Content/obrazky/dost.png",
                 1200, vyskaOkna - 128);
 
+            stop4 = new NPC(GraphicsDevice, 100, "Content/obrazky/konec.png",
+                500, vyskaOkna - 600);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -97,6 +100,7 @@ namespace Kobliha
             stop1.PoziceX = 1200;
             stop2.PoziceX = 1200;
             stop3.PoziceX = 1200;
+            stop4.PoziceX = 400;
             Console.WriteLine(vlk.PoziceX);
             
             if (cislo_obrazovky > 1)
@@ -165,6 +169,11 @@ namespace Kobliha
 
             }
 
+            if (cislo_obrazovky == 9)
+            {
+
+            }
+
         }
         protected override void Draw(GameTime gameTime)
         {
@@ -211,6 +220,11 @@ namespace Kobliha
             if (cislo_obrazovky == 8)
             {
                 stop3.VykresliSe(_spriteBatch);
+            }
+
+            if (cislo_obrazovky == 9)
+            {
+                stop4.VykresliSe(_spriteBatch);
             }
 
             kobliha.VykresliSe(_spriteBatch);
