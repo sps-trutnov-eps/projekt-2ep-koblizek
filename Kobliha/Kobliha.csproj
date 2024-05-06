@@ -16,10 +16,13 @@
     <None Remove="Content\obrazky\babka_.png" />
     <None Remove="Content\obrazky\dedek.png" />
     <None Remove="Content\obrazky\dedek_.png" />
+    <None Remove="Content\obrazky\dost.png" />
     <None Remove="Content\obrazky\Koblizek.png" />
     <None Remove="Content\obrazky\liska.png" />
     <None Remove="Content\obrazky\meda.png" />
     <None Remove="Content\obrazky\medved.png" />
+    <None Remove="Content\obrazky\stop!.png" />
+    <None Remove="Content\obrazky\stop.png" />
     <None Remove="Content\obrazky\vlk.png" />
     <None Remove="Content\obrazky\vlk_.png" />
     <None Remove="Content\obrazky\zajic.png" />
@@ -37,6 +40,9 @@
     <Content Include="Content\obrazky\dedek_.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\obrazky\dost.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\obrazky\Koblizek.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -47,6 +53,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\medved.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obrazky\stop!.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obrazky\stop.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\vlk.png">

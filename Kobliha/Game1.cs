@@ -16,7 +16,7 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         Koblizek kobliha;
-        NPC dedek, babka, vlk, zajic, medved, liska;
+        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3;
        
         //konstruktor
         public Game1()
@@ -63,6 +63,15 @@ namespace Kobliha
 
             liska = new NPC(GraphicsDevice, 100, "Content/obrazky/liska.png",
                 1200, vyskaOkna - 210);
+            
+            stop1 = new NPC(GraphicsDevice, 100, "Content/obrazky/stop.png",
+                1200, vyskaOkna - 128);
+            
+            stop2 = new NPC(GraphicsDevice, 100, "Content/obrazky/stop!.png",
+                1200, vyskaOkna - 128);
+
+            stop3 = new NPC(GraphicsDevice, 100, "Content/obrazky/dost.png",
+                1200, vyskaOkna - 128);
 
 
             // TODO: use this.Content to load your game content here
@@ -85,6 +94,9 @@ namespace Kobliha
             vlk.PoziceX = 1200;
             medved.PoziceX = 1200;
             liska.PoziceX = 1200;
+            stop1.PoziceX = 1200;
+            stop2.PoziceX = 1200;
+            stop3.PoziceX = 1200;
             Console.WriteLine(vlk.PoziceX);
             
             if (cislo_obrazovky > 1)
@@ -137,24 +149,22 @@ namespace Kobliha
             {
 
             }
-            //{
-            //Rectangle hrac = kobliha.GetRectangle(); // Získá obdélník hráče
-            //Rectangle vlkObdelnik = vlk.GetRectangle(); // Získá obdélník vlka
 
-            // Pokud se obdélníky hráče a vlka překrývají (kolize)
-            //if (hrac.Intersects(vlkObdelnik))
-            //{
-            // Zde nastavíme, že se nad vlkem objeví text "baf"
-            //    vlk.Nadpis = "baf";
-            //    Console.WriteLine("Kolize mezi hráčem a vlkem!");
-            // }
-            // else
-            // {
-            // Pokud hráč není v kolizi s vlkem, skryj text
-            //     vlk.Nadpis = "";
-            //     Console.WriteLine("Hráč a vlk se nepřekrývají.");
-            // }
-            //}
+            if (cislo_obrazovky == 6)
+            {
+
+            }
+
+            if (cislo_obrazovky == 7)
+            {
+
+            }
+
+            if (cislo_obrazovky == 8)
+            {
+
+            }
+
         }
         protected override void Draw(GameTime gameTime)
         {
@@ -188,12 +198,20 @@ namespace Kobliha
                 liska.VykresliSe(_spriteBatch);
             }
 
-            // Vykresli text nad vlkem, pokud má nastavený nadpis
-            //   if (!string.IsNullOrEmpty(vlk.Nadpis))
-            //  {
-            //      Vector2 poziceNadpisu = new Vector2(vlk.PoziceX, vlk.PoziceY - 20); // Nastav vhodnou pozici nadpisu
-            //      _spriteBatch.DrawString(spriteFont, vlk.Nadpis, poziceNadpisu, Color.White);
-            //  }
+            if (cislo_obrazovky == 6)
+            {
+                stop1.VykresliSe(_spriteBatch);
+            }
+            
+            if (cislo_obrazovky == 7)
+            {
+                stop2.VykresliSe(_spriteBatch);
+            }
+
+            if (cislo_obrazovky == 8)
+            {
+                stop3.VykresliSe(_spriteBatch);
+            }
 
             kobliha.VykresliSe(_spriteBatch);
 
