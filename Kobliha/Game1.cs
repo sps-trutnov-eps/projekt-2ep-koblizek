@@ -43,25 +43,25 @@ namespace Kobliha
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            kobliha = new Koblizek(GraphicsDevice, 62, "koblizek.png",
+            kobliha = new Koblizek(GraphicsDevice, 62, "Content/obrazky/koblizek.png",
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
             
-            dedek = new NPC(GraphicsDevice, 100, "dedek.png",
+            dedek = new NPC(GraphicsDevice, 100, "Content/obrazky/dedek.png",
                     125, vyskaOkna - 150);
 
-            babka = new NPC(GraphicsDevice, 100, "babka.png",
+            babka = new NPC(GraphicsDevice, 100, "Content/obrazky/babka.png",
                     50, vyskaOkna - 150);
             
-            zajic = new NPC(GraphicsDevice, 100, "zajic.png",
+            zajic = new NPC(GraphicsDevice, 100, "Content/obrazky/zajic.png",
                 1200, vyskaOkna - 160);
             
-            vlk = new NPC(GraphicsDevice, 100, "vlk.png",
+            vlk = new NPC(GraphicsDevice, 100, "Content/obrazky/vlk.png",
                 1200, vyskaOkna - 160);
             
-            medved = new NPC(GraphicsDevice, 100, "meda.png",
+            medved = new NPC(GraphicsDevice, 100, "Content/obrazky/meda.png",
                 1200, vyskaOkna - 260);
 
-            liska = new NPC(GraphicsDevice, 100, "liska.png",
+            liska = new NPC(GraphicsDevice, 100, "Content/obrazky/liska.png",
                 1200, vyskaOkna - 210);
 
 
