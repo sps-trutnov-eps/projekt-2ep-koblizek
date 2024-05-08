@@ -15,9 +15,11 @@ namespace Kobliha
         private int sirkaOkna = 1600;
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
+        public bool konec = false;
         Koblizek kobliha;
         NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4;
-       
+        Endingy ending1;
+        
         //konstruktor
         public Game1()
         {
@@ -42,10 +44,10 @@ namespace Kobliha
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             kobliha = new Koblizek(GraphicsDevice, 62, "Content/obrazky/koblizek.png",
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
-            
+
             dedek = new NPC(GraphicsDevice, 100, "Content/obrazky/dedek.png",
                     125, vyskaOkna - 150);
 
@@ -76,8 +78,9 @@ namespace Kobliha
             stop4 = new NPC(GraphicsDevice, 100, "Content/obrazky/konec.png",
                 500, vyskaOkna - 600);
 
-
-            // TODO: use this.Content to load your game content here
+            ending1 = new Endingy(GraphicsDevice, "Content/obrazky/ending1.png", 0, 0);
+            
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -101,6 +104,7 @@ namespace Kobliha
             stop2.PoziceX = 1200;
             stop3.PoziceX = 1200;
             stop4.PoziceX = 400;
+            
             Console.WriteLine(vlk.PoziceX);
             
             if (cislo_obrazovky > 1)
@@ -128,9 +132,9 @@ namespace Kobliha
 
             if (cislo_obrazovky == 1)
             {
-                if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 10)
+                if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 70)
                 {
-                    kobliha.PoziceX = 300;
+                    konec = true;
                 }
             }
 
@@ -185,6 +189,11 @@ namespace Kobliha
             {
                 dedek.VykresliSe(_spriteBatch);
                 babka.VykresliSe(_spriteBatch);
+                if (konec == true) 
+                {
+                    ending1.VykresliSe(_spriteBatch);
+                    kobliha.PoziceX = 200;
+                }
             }
 
             if (cislo_obrazovky == 2)
@@ -226,8 +235,11 @@ namespace Kobliha
             {
                 stop4.VykresliSe(_spriteBatch);
             }
-
-            kobliha.VykresliSe(_spriteBatch);
+            if (konec != true)
+            {
+                kobliha.VykresliSe(_spriteBatch);
+            }
+            
 
             _spriteBatch.End();
             base.Draw(gameTime);

@@ -17,6 +17,7 @@
     <None Remove="Content\obrazky\dedek.png" />
     <None Remove="Content\obrazky\dedek_.png" />
     <None Remove="Content\obrazky\dost.png" />
+    <None Remove="Content\obrazky\ending1.png" />
     <None Remove="Content\obrazky\Koblizek.png" />
     <None Remove="Content\obrazky\konec.png" />
     <None Remove="Content\obrazky\liska.png" />
@@ -42,6 +43,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\dost.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obrazky\ending1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\Koblizek.png">

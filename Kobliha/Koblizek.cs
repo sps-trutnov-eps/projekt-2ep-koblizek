@@ -18,19 +18,19 @@ namespace Kobliha
         private Keys OvladaniDoprava { get; set; }
         private Keys OvladaniSkok { get; set; }
         protected Texture2D Textura { get; set; }
-        
+        private bool jeOtocenyDoprava = false;
+        private float UhelRotace { get; set; } = 0f;
+        private float RychlostKutaleni { get; set; } = 0.2f;
+        private float RychlostRotace { get; set; } = 5f;
+
         private bool naZemi = true;
-        
+
         private int vychoziPoziceY;
 
         private int casLetu = 0;
 
         private int maxCasLetu = 20; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
-        
-        private bool jeOtocenyDoprava = false;
-        private float UhelRotace { get; set; } = 0f;
-        private float RychlostKutaleni { get; set; } = 0.2f;
-        private float RychlostRotace { get; set; } = 5f;
+
         //konstruktor
 
         public Rectangle GetRectangle()
@@ -62,8 +62,7 @@ namespace Kobliha
         // metody
         public void PohniSe(KeyboardState stavKlavesnice)
         {
-
-            if (stavKlavesnice.IsKeyDown(OvladaniDoprava))
+                if (stavKlavesnice.IsKeyDown(OvladaniDoprava))
             {
                 PoziceX += Rychlost;
                 UhelRotace += RychlostRotace; // Otáčení doleva
@@ -82,7 +81,7 @@ namespace Kobliha
                 naZemi = false;
                 casLetu = 0;
             }
-
+            
             if (!naZemi)
             {
                 if (casLetu < maxCasLetu)
