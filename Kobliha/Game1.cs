@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Kobliha
 {
@@ -45,6 +47,8 @@ namespace Kobliha
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            
+
             kobliha = new Koblizek(GraphicsDevice, 62, "Content/obrazky/koblizek.png",
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
 
@@ -79,8 +83,8 @@ namespace Kobliha
                 500, vyskaOkna - 600);
 
             ending1 = new Endingy(GraphicsDevice, "Content/obrazky/ending1.png", 0, 0);
-            
-            
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -94,18 +98,8 @@ namespace Kobliha
             kobliha.PohniSe(klavesnice);
             //InterakceSVlkem(); // Zde zavolej metodu pro interakci s vlkem
             base.Update(gameTime);
-            dedek.PoziceX = 125;
-            babka.PoziceX = 50;
-            zajic.PoziceX = 1200;
-            vlk.PoziceX = 1200;
-            medved.PoziceX = 1200;
-            liska.PoziceX = 1200;
-            stop1.PoziceX = 1200;
-            stop2.PoziceX = 1200;
-            stop3.PoziceX = 1200;
-            stop4.PoziceX = 400;
             
-            Console.WriteLine(vlk.PoziceX);
+            Console.WriteLine(dedek.PoziceX);
             
             if (cislo_obrazovky > 1)
             {
@@ -136,6 +130,8 @@ namespace Kobliha
                 {
                     konec = true;
                 }
+                dedek.PohniSe();
+                babka.PohniSe();
             }
 
             if (cislo_obrazovky == 2)
@@ -187,7 +183,9 @@ namespace Kobliha
 
             if (cislo_obrazovky == 1)
             {
+                Debug.WriteLine("deda");
                 dedek.VykresliSe(_spriteBatch);
+                
                 babka.VykresliSe(_spriteBatch);
                 if (konec == true) 
                 {

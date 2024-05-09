@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
 
 namespace Kobliha
 {
@@ -15,26 +16,25 @@ namespace Kobliha
     {
         protected int Velikost { get; set; }
         private Vector2 Pozice { get; set; }
-        public int PoziceX { get; set; }
-        public int PoziceY { get; set; }
+        public float PoziceX => this.Pozice.X;
+        public float PoziceY => this.Pozice.Y;
         protected Texture2D Textura { get; set; }
-        public string Nadpis { get; set; }
-        public Rectangle GetRectangle()
-        {
-            // Vrátí obdélník reprezentující pozici a velikost NPC
-            return new Rectangle((int)PoziceX, (int)PoziceY, Velikost, Velikost);
-        }
 
         public NPC(GraphicsDevice grafickeZarizeni, int velikost, string nazevSouboru,
-            int poziceX, int poziceY)
+            int PoziceX, int PoziceY)
         {
             Velikost = velikost;
-            Pozice = new Vector2(poziceX, poziceY);
+            Pozice = new Vector2(PoziceX, PoziceY);
 
             using (FileStream stream = new FileStream(nazevSouboru, FileMode.Open))
             {
                 Textura = Texture2D.FromStream(grafickeZarizeni, stream);
             }
+        }
+
+        public void PohniSe()
+        {
+            Pozice = new Vector2(Pozice.X + 1, Pozice.Y);
         }
         public void VykresliSe(SpriteBatch vykreslovaciDavka)
         {
