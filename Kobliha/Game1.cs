@@ -96,7 +96,7 @@ namespace Kobliha
             base.Update(gameTime);
 
             kobliha.PohniSe(klavesnice);
-            //InterakceSVlkem(); // Zde zavolej metodu pro interakci s vlkem
+            
             base.Update(gameTime);
             
             Console.WriteLine(dedek.PoziceX);
@@ -128,7 +128,7 @@ namespace Kobliha
             {
                 if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 70)
                 {
-                    konec = true;
+                    
                 }
                 dedek.PohniSe();
                 babka.PohniSe();
@@ -136,7 +136,10 @@ namespace Kobliha
 
             if (cislo_obrazovky == 2)
             {
-
+                if (kobliha.PoziceX > zajic.PoziceX -400 && kobliha.PoziceX < zajic.PoziceX - 50)
+                {
+                    konec = true;
+                }
             }
 
             if (cislo_obrazovky == 3)
