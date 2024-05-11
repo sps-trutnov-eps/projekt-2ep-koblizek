@@ -1,9 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
+﻿using Microsoft.Xna.Framework; 
+using Microsoft.Xna.Framework.Graphics; 
+using Microsoft.Xna.Framework.Input; 
+using System; 
+using System.Diagnostics; 
+using System.Security.Cryptography.X509Certificates; 
+
+
+
 
 namespace Kobliha
 {
@@ -47,7 +50,7 @@ namespace Kobliha
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            
+            spriteFont = Content.Load<SpriteFont>("Arial");
 
             kobliha = new Koblizek(GraphicsDevice, 62, "Content/obrazky/koblizek.png",
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
@@ -138,7 +141,7 @@ namespace Kobliha
             {
                 if (kobliha.PoziceX > zajic.PoziceX -400 && kobliha.PoziceX < zajic.PoziceX - 50)
                 {
-                    konec = true;
+                    _spriteBatch.DrawString(spriteFont, "baf", new Vector2(500, 500), Color.Black);
                 }
             }
 
@@ -186,7 +189,7 @@ namespace Kobliha
 
             if (cislo_obrazovky == 1)
             {
-                Debug.WriteLine("deda");
+                
                 dedek.VykresliSe(_spriteBatch);
                 
                 babka.VykresliSe(_spriteBatch);

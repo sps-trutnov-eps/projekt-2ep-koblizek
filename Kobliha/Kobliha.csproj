@@ -12,6 +12,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Content\obrazky\Arial.xnb" />
     <None Remove="Content\obrazky\babka.png" />
     <None Remove="Content\obrazky\babka_.png" />
     <None Remove="Content\obrazky\dedek.png" />
@@ -30,6 +31,9 @@
     <None Remove="Content\obrazky\zajic.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\obrazky\Arial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\obrazky\babka.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
