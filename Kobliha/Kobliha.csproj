@@ -12,7 +12,12 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Content\obrazky\Arial.xnb" />
+    <Compile Remove="Content\Roboto\**" />
+    <EmbeddedResource Remove="Content\Roboto\**" />
+    <None Remove="Content\Roboto\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Content\Arial.xnb" />
     <None Remove="Content\obrazky\babka.png" />
     <None Remove="Content\obrazky\babka_.png" />
     <None Remove="Content\obrazky\dedek.png" />
@@ -24,14 +29,16 @@
     <None Remove="Content\obrazky\liska.png" />
     <None Remove="Content\obrazky\meda.png" />
     <None Remove="Content\obrazky\medved.png" />
+    <None Remove="Content\obrazky\Roboto-Medium.ttf" />
     <None Remove="Content\obrazky\stop!.png" />
     <None Remove="Content\obrazky\stop.png" />
     <None Remove="Content\obrazky\vlk.png" />
     <None Remove="Content\obrazky\vlk_.png" />
     <None Remove="Content\obrazky\zajic.png" />
+    <None Remove="Content\Roboto-Medium.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\obrazky\Arial.xnb">
+    <Content Include="Content\Arial.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\babka.png">
