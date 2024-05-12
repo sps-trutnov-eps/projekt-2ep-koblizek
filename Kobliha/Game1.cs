@@ -90,6 +90,7 @@ namespace Kobliha
 
         }
 
+
         protected override void Update(GameTime gameTime)
         {
             KeyboardState klavesnice = Keyboard.GetState();
@@ -99,11 +100,11 @@ namespace Kobliha
             base.Update(gameTime);
 
             kobliha.PohniSe(klavesnice);
-            
+
             base.Update(gameTime);
-            
+
             Console.WriteLine(dedek.PoziceX);
-            
+
             if (cislo_obrazovky > 1)
             {
                 if (kobliha.PoziceX < -50)
@@ -112,7 +113,7 @@ namespace Kobliha
                     cislo_obrazovky -= 1;
                 }
             }
-            
+
             if (kobliha.PoziceX > sirkaOkna)
             {
                 kobliha.PoziceX = -50;
@@ -139,7 +140,10 @@ namespace Kobliha
 
             if (cislo_obrazovky == 2)
             {
-
+                if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 70)
+                {
+                    cislo_obrazovky = 10;
+                }
             }
 
             if (cislo_obrazovky == 3)
@@ -178,6 +182,7 @@ namespace Kobliha
             }
 
         }
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);

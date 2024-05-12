@@ -14,6 +14,7 @@ namespace Kobliha
 {
     public class NPC
     {
+
         protected int Velikost { get; set; }
         private Vector2 Pozice { get; set; }
         public float PoziceX => this.Pozice.X;
