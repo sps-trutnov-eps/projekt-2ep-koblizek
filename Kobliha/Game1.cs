@@ -142,23 +142,36 @@ namespace Kobliha
             {
                 if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 70)
                 {
-                    cislo_obrazovky = 10;
+                    if (klavesnice.IsKeyDown(Keys.Space))
+                        cislo_obrazovky = 10;
                 }
             }
 
             if (cislo_obrazovky == 3)
             {
-
+                if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 90)
+                {
+                    if (klavesnice.IsKeyDown(Keys.Space))
+                        cislo_obrazovky = 10;
+                }
             }
 
             if (cislo_obrazovky == 4)
             {
-
+                if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 120)
+                {
+                    if (klavesnice.IsKeyDown(Keys.Space))
+                        cislo_obrazovky = 10;
+                }
             }
 
             if (cislo_obrazovky == 5)
             {
-
+                if (kobliha.PoziceX > liska.PoziceX && kobliha.PoziceX < liska.PoziceX + 90)
+                {
+                    if (klavesnice.IsKeyDown(Keys.Space))
+                        cislo_obrazovky = 9;
+                }
             }
 
             if (cislo_obrazovky == 6)
@@ -178,7 +191,10 @@ namespace Kobliha
 
             if (cislo_obrazovky == 9)
             {
-
+                if (kobliha.PoziceX > stop4.PoziceX && kobliha.PoziceX < stop4.PoziceX + 70)
+                {
+                    Exit();
+                }
             }
 
         }
@@ -205,25 +221,37 @@ namespace Kobliha
             if (cislo_obrazovky == 2)
             {
                 zajic.VykresliSe(_spriteBatch);
-                if (kobliha.PoziceX > zajic.PoziceX - 400 && kobliha.PoziceX < zajic.PoziceX - 50)
+                if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "baf", new Vector2(500, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Mam pro tebe ukol, spln ho a ziskas odmenu (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
                 }
             }
 
             if (cislo_obrazovky == 3)
             {
                 vlk.VykresliSe(_spriteBatch);
+                if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 120)
+                {
+                    _spriteBatch.DrawString(spriteFont, "wof wof wof", new Vector2(600, 500), Color.Black);
+                }
             }
 
             if (cislo_obrazovky == 4)
             {
                 medved.VykresliSe(_spriteBatch);
+                if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 120)
+                {
+                    _spriteBatch.DrawString(spriteFont, "brum brum", new Vector2(600, 500), Color.Black);
+                }
             }
 
             if (cislo_obrazovky == 5)
             {
                 liska.VykresliSe(_spriteBatch);
+                if (kobliha.PoziceX > liska.PoziceX && kobliha.PoziceX < liska.PoziceX + 120)
+                {
+                    _spriteBatch.DrawString(spriteFont, "ahoj ja jsem liska a to vse dekuji za pochopeni", new Vector2(600, 500), Color.Black);
+                }
             }
 
             if (cislo_obrazovky == 6)
