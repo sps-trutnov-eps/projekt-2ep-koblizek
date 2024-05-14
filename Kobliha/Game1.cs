@@ -128,6 +128,20 @@ namespace Kobliha
                 }
             }
 
+            if (cislo_obrazovky == 10)
+            {
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
+                
+                if (kobliha.PoziceX > sirkaOkna - 10)
+                {
+                    kobliha.PoziceX = 500;
+                    cislo_obrazovky = 2;
+                }
+            }
+
             if (cislo_obrazovky == 1)
             {
                 if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 70)
@@ -198,9 +212,7 @@ namespace Kobliha
             }
 
         }
-        //HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEJJJJJJJJJJJJJJ TOMASI TOHLE JE KOMENTAR PRO TEBE
-        // JE NUTNE ABY SIS TO PRECETL
-        //KDYBY SI NAHODOU PRACOVAL, UDELAL JSEM ZE TE TY ZVIRATKA TELEPORTUJOU VSECHNY NA OBRAZOVKU 10 TAK ABY V TOM NEBYL ZMATEK
+       
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
