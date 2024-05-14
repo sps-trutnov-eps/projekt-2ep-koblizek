@@ -137,7 +137,7 @@ namespace Kobliha
                 
                 if (kobliha.PoziceX > sirkaOkna - 10)
                 {
-                    kobliha.PoziceX = 500;
+                    kobliha.PoziceX = sirkaOkna / 2;
                     cislo_obrazovky = 2;
                 }
             }
@@ -158,6 +158,7 @@ namespace Kobliha
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
                         cislo_obrazovky = 10;
+                        kobliha.PoziceX = 10;
                 }
             }
 
@@ -166,7 +167,7 @@ namespace Kobliha
                 if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 90)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
-                        cislo_obrazovky = 10;
+                        cislo_obrazovky = 11;
                 }
             }
 
@@ -175,7 +176,7 @@ namespace Kobliha
                 if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 120)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
-                        cislo_obrazovky = 10;
+                        cislo_obrazovky = 12;
                 }
             }
 
