@@ -128,51 +128,7 @@ namespace Kobliha
                 }
             }
 
-            if (cislo_obrazovky == 10)
-            {
-                if (kobliha.PoziceX < 0)
-                {
-                    kobliha.PoziceX = 0;
-                }
-                
-                if (kobliha.PoziceX > sirkaOkna - 10)
-                {
-                    kobliha.PoziceX = sirkaOkna / 2;
-                    cislo_obrazovky = 2;
-                }
-                if (kobliha.PoziceX > sirkaOkna - 200 && kobliha.PoziceX < sirkaOkna)
-                {
-                    konec = true;
-                }
-            }
-
-            if (cislo_obrazovky == 11)
-            {
-                if (kobliha.PoziceX < 0)
-                {
-                    kobliha.PoziceX = 0;
-                }
-
-                if (kobliha.PoziceX > sirkaOkna - 10)
-                {
-                    kobliha.PoziceX = sirkaOkna / 2;
-                    cislo_obrazovky = 3;
-                }
-            }
-
-            if (cislo_obrazovky == 12)
-            {
-                if (kobliha.PoziceX < 0)
-                {
-                    kobliha.PoziceX = 0;
-                }
-
-                if (kobliha.PoziceX > sirkaOkna - 10)
-                {
-                    kobliha.PoziceX = sirkaOkna / 2;
-                    cislo_obrazovky = 4;
-                }
-            }
+            
 
             if (cislo_obrazovky == 1)
             {
@@ -252,6 +208,51 @@ namespace Kobliha
                 }
             }
 
+            if (cislo_obrazovky == 10)
+            {
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
+
+                if (kobliha.PoziceX > sirkaOkna - 10)
+                {
+                    kobliha.PoziceX = sirkaOkna / 2;
+                    cislo_obrazovky = 2;
+                }
+                if (kobliha.PoziceX > sirkaOkna - 200 && kobliha.PoziceX < sirkaOkna)
+                {
+                    konec = true;
+                }
+            }
+
+            if (cislo_obrazovky == 11)
+            {
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
+
+                if (kobliha.PoziceX > sirkaOkna - 10)
+                {
+                    kobliha.PoziceX = sirkaOkna / 2;
+                    cislo_obrazovky = 3;
+                }
+            }
+
+            if (cislo_obrazovky == 12)
+            {
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
+
+                if (kobliha.PoziceX > sirkaOkna - 10)
+                {
+                    kobliha.PoziceX = sirkaOkna / 2;
+                    cislo_obrazovky = 4;
+                }
+            }
         }
        
         protected override void Draw(GameTime gameTime)
