@@ -23,7 +23,7 @@ namespace Kobliha
         public bool konec = false;
         Koblizek kobliha;
         NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4;
-        Endingy ending1;
+        Endingy ending1, ending2;
         
         //konstruktor
         public Game1()
@@ -87,7 +87,7 @@ namespace Kobliha
 
             ending1 = new Endingy(GraphicsDevice, "Content/obrazky/ending1.png", 0, 0);
 
-
+            ending2 = new Endingy(GraphicsDevice, "Content/obrazky/ending2.png", 0, 0);
         }
 
 
@@ -140,6 +140,10 @@ namespace Kobliha
                     kobliha.PoziceX = sirkaOkna / 2;
                     cislo_obrazovky = 2;
                 }
+                if (kobliha.PoziceX > sirkaOkna - 200 && kobliha.PoziceX < sirkaOkna)
+                {
+                    konec = true;
+                }
             }
 
             if (cislo_obrazovky == 11)
@@ -182,14 +186,13 @@ namespace Kobliha
 
             if (cislo_obrazovky == 2)
             {
-                if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 70)
+                if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 120)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
                     {
                         cislo_obrazovky = 10;
                         kobliha.PoziceX = 10;
-                    }
-                        
+                    } 
                 }
             }
 
@@ -325,6 +328,17 @@ namespace Kobliha
             {
                 stop4.VykresliSe(_spriteBatch);
             }
+
+            if (cislo_obrazovky == 10)
+            {
+                if (konec == true)
+                {
+                    ending2.VykresliSe(_spriteBatch);
+                    kobliha.PoziceX = 200;
+                }
+
+            }
+
             if (konec != true)
             {
                 kobliha.VykresliSe(_spriteBatch);
