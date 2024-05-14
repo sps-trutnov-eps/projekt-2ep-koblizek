@@ -142,6 +142,34 @@ namespace Kobliha
                 }
             }
 
+            if (cislo_obrazovky == 11)
+            {
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
+
+                if (kobliha.PoziceX > sirkaOkna - 10)
+                {
+                    kobliha.PoziceX = sirkaOkna / 2;
+                    cislo_obrazovky = 3;
+                }
+            }
+
+            if (cislo_obrazovky == 12)
+            {
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 0;
+                }
+
+                if (kobliha.PoziceX > sirkaOkna - 10)
+                {
+                    kobliha.PoziceX = sirkaOkna / 2;
+                    cislo_obrazovky = 4;
+                }
+            }
+
             if (cislo_obrazovky == 1)
             {
                 if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 70)
@@ -157,8 +185,11 @@ namespace Kobliha
                 if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 70)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
+                    {
                         cislo_obrazovky = 10;
                         kobliha.PoziceX = 10;
+                    }
+                        
                 }
             }
 
@@ -167,7 +198,10 @@ namespace Kobliha
                 if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 90)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
+                    {
                         cislo_obrazovky = 11;
+                        kobliha.PoziceX = 10;
+                    }
                 }
             }
 
@@ -176,7 +210,10 @@ namespace Kobliha
                 if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 120)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
+                    {
                         cislo_obrazovky = 12;
+                        kobliha.PoziceX = 10;
+                    }
                 }
             }
 
@@ -206,7 +243,7 @@ namespace Kobliha
 
             if (cislo_obrazovky == 9)
             {
-                if (kobliha.PoziceX > stop4.PoziceX && kobliha.PoziceX < stop4.PoziceX + 70)
+                if (kobliha.PoziceX > stop4.PoziceX && kobliha.PoziceX < stop4.PoziceX + 400)
                 {
                     Exit();
                 }
@@ -247,16 +284,16 @@ namespace Kobliha
                 vlk.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "wof wof wof", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Jestli si splnil zajcuv ukol, ceka te tu tezsi (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
                 }
             }
 
             if (cislo_obrazovky == 4)
             {
                 medved.VykresliSe(_spriteBatch);
-                if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 120)
+                if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 200)
                 {
-                    _spriteBatch.DrawString(spriteFont, "brum brum", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Pokud si splnil predesle dva ukoly, uvidime jak si poradis s timhle (potvrd mezernikem)", new Vector2(400, 500), Color.Black);
                 }
             }
 
