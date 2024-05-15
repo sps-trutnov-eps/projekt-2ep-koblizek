@@ -10,7 +10,7 @@ namespace Kobliha
         public int PoziceX { get; set; }
         public int PoziceY { get; set; }
         public Vector2 Pozice { get; set; }
-        private int Rychlost { get; set; } = 4;
+        private int Rychlost { get; set; } = 6;
         private int RychlostSkoku { get; set; } = 5;
         private int SkokSilou { get; set; } = 15;
         private bool Skace { get; set; } = false;
@@ -21,7 +21,7 @@ namespace Kobliha
         private bool jeOtocenyDoprava = false;
         private float UhelRotace { get; set; } = 0f;
         private float RychlostKutaleni { get; set; } = 0.2f;
-        private float RychlostRotace { get; set; } = 5f;
+        private float RychlostRotace { get; set; } = 7f;
 
         private bool naZemi = true;
 
@@ -32,7 +32,7 @@ namespace Kobliha
         private int maxCasLetu = 20; // Čas letu v počtu snímků, můžete přizpůsobit podle potřeby
 
         //konstruktor
-
+        
         public Rectangle GetRectangle()
         {
             // Vrátí obdélník reprezentující pozici a velikost hráče (kobližku)
@@ -77,9 +77,7 @@ namespace Kobliha
 
             if (stavKlavesnice.IsKeyDown(OvladaniSkok) && naZemi)
             {
-                vychoziPoziceY = PoziceY;
-                naZemi = false;
-                casLetu = 0;
+
             }
             
             if (!naZemi)

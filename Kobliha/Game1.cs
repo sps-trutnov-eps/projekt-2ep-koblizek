@@ -20,10 +20,16 @@ namespace Kobliha
         private int sirkaOkna = 1600;
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
-        public bool konec = false;
+        private bool konec = false;
+        private bool vzduch = false;
+        private int rychlost_skoku = 0;
+        
+        
         Koblizek kobliha;
         NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4;
         Endingy ending1, ending2;
+        Zem zem1;
+        
         
         //konstruktor
         public Game1()
@@ -52,7 +58,7 @@ namespace Kobliha
 
             spriteFont = Content.Load<SpriteFont>("Arial");
 
-            kobliha = new Koblizek(GraphicsDevice, 62, "Content/obrazky/koblizek.png",
+            kobliha = new Koblizek(GraphicsDevice, 70, "Content/obrazky/koblizek.png",
             Keys.A, Keys.D, Keys.W, sirkaOkna, vyskaOkna);
 
             dedek = new NPC(GraphicsDevice, 100, "Content/obrazky/dedek.png",
@@ -88,6 +94,8 @@ namespace Kobliha
             ending1 = new Endingy(GraphicsDevice, "Content/obrazky/ending1.png", 0, 0);
 
             ending2 = new Endingy(GraphicsDevice, "Content/obrazky/ending2.png", 0, 0);
+
+            zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 5, sirkaOkna, 10);
         }
 
 
@@ -99,14 +107,44 @@ namespace Kobliha
             kobliha.PohniSe(klavesnice);
             base.Update(gameTime);
 
-            kobliha.PohniSe(klavesnice);
+            
 
             base.Update(gameTime);
 
-            Console.WriteLine(dedek.PoziceX);
-
-            if (cislo_obrazovky > 1)
+            if (kobliha.PoziceY + 61 < zem1.PoziceY && kobliha.PoziceY + 61 > zem1.PoziceY - 5)
             {
+                vzduch = false;
+                Console.WriteLine("zem");
+            }
+            else
+            {
+                vzduch = true;
+            }
+            
+            if (vzduch == false)
+            {
+                rychlost_skoku = 0;
+                if (klavesnice.IsKeyDown(Keys.W))
+                {
+                    vzduch = true;
+                    rychlost_skoku = 15;
+                }
+            }
+
+            if (vzduch == true)
+            {
+
+                rychlost_skoku -= (1);
+                kobliha.PoziceY -= rychlost_skoku;
+            }
+           
+            
+            
+            
+            
+            
+            if (cislo_obrazovky > 1)
+            {  
                 if (kobliha.PoziceX < -50)
                 {
                     kobliha.PoziceX = sirkaOkna;
@@ -127,8 +165,6 @@ namespace Kobliha
                     kobliha.PoziceX = 0;
                 }
             }
-
-            
 
             if (cislo_obrazovky == 1)
             {
@@ -258,8 +294,9 @@ namespace Kobliha
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             _spriteBatch.Begin();
+
+            zem1.VykresliSe(_spriteBatch);
 
             if (cislo_obrazovky == 1)
             {
