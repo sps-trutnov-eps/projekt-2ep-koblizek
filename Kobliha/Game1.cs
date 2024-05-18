@@ -122,9 +122,9 @@ namespace Kobliha
                 vzduch = false;
                 
             }
+            //prohodil jsem tam ty sipky u PoziceY a dal to cislo do + a uz to jde a raky jsem snizil maximalni velkiost toho rychlost_skoku
             
-            
-            else if (kobliha.PoziceY + kobliha.Velikost > zem2.PoziceY && kobliha.PoziceY + kobliha.Velikost < zem2.PoziceY + 20 && kobliha.PoziceX > zem2.PoziceX - 61 && kobliha.PoziceX < zem2.PoziceX + 100)
+            else if (kobliha.PoziceY + kobliha.Velikost > zem2.PoziceY && kobliha.PoziceY + kobliha.Velikost < zem2.PoziceY + zem2.Vyska && kobliha.PoziceX > zem2.PoziceX - kobliha.Velikost && kobliha.PoziceX < zem2.PoziceX + zem2.Sirka)
             {
                 vzduch = false;
                 Console.WriteLine("sem nahore");

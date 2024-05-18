@@ -17,18 +17,21 @@ namespace Kobliha
 
         
         private Vector2 Pozice { get; set; }
-        private Rectangle Velikost { get; set; }
+        public Rectangle Velikost { get; set; }
         public float PoziceX => this.Pozice.X;
         public float PoziceY => this.Pozice.Y;
         protected Texture2D Textura { get; set; }
-
-        public Zem(GraphicsDevice grafickeZarizeni, int PoziceX, int PoziceY, int Sirka, int Vyska)
+        public int Sirka { get; set; }
+        public int Vyska { get; set; }
+        public Zem(GraphicsDevice grafickeZarizeni, int PoziceX, int PoziceY, int sirka, int vyska)
         {   
             Pozice = new Vector2(PoziceX, PoziceY);
-            Velikost = new Rectangle(PoziceX, PoziceY, Sirka, Vyska);
+            Velikost = new Rectangle(PoziceX, PoziceY, sirka, vyska);
             
             Textura = new Texture2D(grafickeZarizeni, 1, 1);
             Textura.SetData(new[] { Color.Green });
+            Sirka = sirka;
+            Vyska = vyska;
         }
         public void VykresliSe(SpriteBatch vykreslovaciDavka)
         {
