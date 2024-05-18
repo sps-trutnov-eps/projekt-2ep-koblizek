@@ -97,7 +97,7 @@ namespace Kobliha
 
             //PLATFORMY
             
-            zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 15, sirkaOkna, 20);
+            zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 15, sirkaOkna, 15);
             zem2 = new Zem(GraphicsDevice, 1000, 800, 100, 20);
         }
 
@@ -111,23 +111,23 @@ namespace Kobliha
             base.Update(gameTime);
 
             
-
+            
             base.Update(gameTime);
 
           
             //PLATFORMY
 
-            if (kobliha.PoziceY + 61 < zem1.PoziceY && kobliha.PoziceY + 61 > zem1.PoziceY - 15)
+            if (kobliha.PoziceY + 61 > zem1.PoziceY && kobliha.PoziceY + 61 < zem1.PoziceY + 15)
             {
                 vzduch = false;
                 
             }
-
             
-            else if (kobliha.PoziceY + 61 < zem2.PoziceY && kobliha.PoziceY + 61 > zem2.PoziceY - 5 && kobliha.PoziceX > zem2.PoziceX - 61 && kobliha.PoziceX < zem2.PoziceX + 100)
+            
+            else if (kobliha.PoziceY + kobliha.Velikost > zem2.PoziceY && kobliha.PoziceY + kobliha.Velikost < zem2.PoziceY + 20 && kobliha.PoziceX > zem2.PoziceX - 61 && kobliha.PoziceX < zem2.PoziceX + 100)
             {
                 vzduch = false;
-                Console.WriteLine("hhht");
+                Console.WriteLine("sem nahore");
             }
 
             else
@@ -152,13 +152,13 @@ namespace Kobliha
             if (vzduch == true)
             {
 
-                rychlost_skoku -= (1);
+                rychlost_skoku -= 1;
                 kobliha.PoziceY -= rychlost_skoku;
                 
             }
-            if (rychlost_skoku < -14) 
+            if (rychlost_skoku < -13) 
             {
-                rychlost_skoku = (-14);
+                rychlost_skoku = (-13);
             }
 
 

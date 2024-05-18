@@ -6,7 +6,7 @@ namespace Kobliha
 {
 	public class Koblizek
 	{
-        protected int Velikost { get; set; }
+        public int Velikost { get; set; }
         public int PoziceX { get; set; }
         public int PoziceY { get; set; }
         public Vector2 Pozice { get; set; }
@@ -45,7 +45,7 @@ namespace Kobliha
             Velikost = velikost;
 
             PoziceX = rozmerOknaX / 2;
-            PoziceY = 500;
+            PoziceY = 700;
 
             OvladaniDoleva = smerDoleva;
             OvladaniDoprava = smerDoprava;
