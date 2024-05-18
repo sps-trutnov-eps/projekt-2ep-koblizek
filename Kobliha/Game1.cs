@@ -28,7 +28,7 @@ namespace Kobliha
         Koblizek kobliha;
         NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4;
         Endingy ending1, ending2;
-        Zem zem1;
+        Zem zem1, zem2;
         
         
         //konstruktor
@@ -95,7 +95,10 @@ namespace Kobliha
 
             ending2 = new Endingy(GraphicsDevice, "Content/obrazky/ending2.png", 0, 0);
 
-            zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 5, sirkaOkna, 10);
+            //PLATFORMY
+            
+            zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 15, sirkaOkna, 20);
+            zem2 = new Zem(GraphicsDevice, 1000, 800, 100, 20);
         }
 
 
@@ -111,16 +114,31 @@ namespace Kobliha
 
             base.Update(gameTime);
 
-            if (kobliha.PoziceY + 61 < zem1.PoziceY && kobliha.PoziceY + 61 > zem1.PoziceY - 5)
+          
+            //PLATFORMY
+
+            if (kobliha.PoziceY + 61 < zem1.PoziceY && kobliha.PoziceY + 61 > zem1.PoziceY - 15)
             {
                 vzduch = false;
-                Console.WriteLine("zem");
+                
             }
+
+            
+            else if (kobliha.PoziceY + 61 < zem2.PoziceY && kobliha.PoziceY + 61 > zem2.PoziceY - 5 && kobliha.PoziceX > zem2.PoziceX - 61 && kobliha.PoziceX < zem2.PoziceX + 100)
+            {
+                vzduch = false;
+                Console.WriteLine("hhht");
+            }
+
             else
             {
                 vzduch = true;
             }
             
+         
+
+            //SKOK
+
             if (vzduch == false)
             {
                 rychlost_skoku = 0;
@@ -136,13 +154,18 @@ namespace Kobliha
 
                 rychlost_skoku -= (1);
                 kobliha.PoziceY -= rychlost_skoku;
+                
             }
-           
-            
-            
-            
-            
-            
+            if (rychlost_skoku < -14) 
+            {
+                rychlost_skoku = (-14);
+            }
+
+
+
+
+
+
             if (cislo_obrazovky > 1)
             {  
                 if (kobliha.PoziceX < -50)
@@ -297,6 +320,7 @@ namespace Kobliha
             _spriteBatch.Begin();
 
             zem1.VykresliSe(_spriteBatch);
+            zem2.VykresliSe(_spriteBatch);
 
             if (cislo_obrazovky == 1)
             {

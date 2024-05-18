@@ -45,7 +45,7 @@ namespace Kobliha
             Velikost = velikost;
 
             PoziceX = rozmerOknaX / 2;
-            PoziceY = rozmerOknaY - velikost;
+            PoziceY = 500;
 
             OvladaniDoleva = smerDoleva;
             OvladaniDoprava = smerDoprava;
