@@ -374,7 +374,7 @@ namespace Kobliha
                 zajic.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Mam pro tebe ukol, spln ho a ziskas odmenu (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku mam pro tebe ukol, spln ho a ziskas odmenu, nespnis ho a ja te sezeru (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
                 }
             }
 
@@ -383,7 +383,7 @@ namespace Kobliha
                 vlk.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Jestli si splnil zajcuv ukol, ceka te tu tezsi (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku mam pro tebe ukol, nedas ho a skoncis u me v brise! (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
                 }
             }
 
@@ -392,7 +392,7 @@ namespace Kobliha
                 medved.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 200)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Pokud si splnil predesle dva ukoly, uvidime jak si poradis s timhle (potvrd mezernikem)", new Vector2(400, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku dam ti ukol, spln ho nebo zemres! (potvrd mezernikem)", new Vector2(400, 500), Color.Black);
                 }
             }
 
@@ -401,7 +401,7 @@ namespace Kobliha
                 liska.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > liska.PoziceX && kobliha.PoziceX < liska.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "ahoj ja jsem liska a to vse dekuji za pochopeni", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku ja te SNIM! ", new Vector2(600, 500), Color.Black);
                 }
             }
 
