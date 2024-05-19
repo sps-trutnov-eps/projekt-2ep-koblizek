@@ -21,14 +21,14 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         private bool konec = false;
-        private bool vzduch = false;
+        private bool vzduch = true;
         private int rychlost_skoku = 0;
         
         
         Koblizek kobliha;
-        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4;
-        Endingy ending1, ending2;
-        Zem zem1, zem2;
+        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4, lava;
+        Endingy ending1, ending2, ending3, ending4;
+        Zem zem1, zem2, zem3;
         
         
         //konstruktor
@@ -95,10 +95,17 @@ namespace Kobliha
 
             ending2 = new Endingy(GraphicsDevice, "Content/obrazky/ending2.png", 0, 0);
 
+            ending3 = new Endingy(GraphicsDevice, "Content/obrazky/ending3.png", 0, 0);
+
+            ending4 = new Endingy(GraphicsDevice, "Content/obrazky/ending4.png", 0, 0);
+
+            lava = new NPC(GraphicsDevice, 100, "Content/obrazky/lava.png", 100, 880);
+
             //PLATFORMY
-            
+
             zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 15, sirkaOkna, 15);
-            zem2 = new Zem(GraphicsDevice, 1000, 800, 100, 20);
+            zem2 = new Zem(GraphicsDevice, 500, 800, 100, 20);
+            zem3 = new Zem(GraphicsDevice, 200, 820, 100, 20);
         }
 
 
@@ -121,19 +128,9 @@ namespace Kobliha
             {
                 vzduch = false;
                 
-            }
-            //prohodil jsem tam ty sipky u PoziceY a dal to cislo do + a uz to jde a raky jsem snizil maximalni velkiost toho rychlost_skoku
+            } 
             
-            else if (kobliha.PoziceY + kobliha.Velikost > zem2.PoziceY && kobliha.PoziceY + kobliha.Velikost < zem2.PoziceY + zem2.Vyska && kobliha.PoziceX > zem2.PoziceX - kobliha.Velikost && kobliha.PoziceX < zem2.PoziceX + zem2.Sirka)
-            {
-                vzduch = false;
-                Console.WriteLine("sem nahore");
-            }
-
-            else
-            {
-                vzduch = true;
-            }
+           
             
          
 
@@ -279,7 +276,25 @@ namespace Kobliha
                     kobliha.PoziceX = sirkaOkna / 2;
                     cislo_obrazovky = 2;
                 }
-                if (kobliha.PoziceX > sirkaOkna - 200 && kobliha.PoziceX < sirkaOkna)
+                
+
+                //Platformy
+
+                else if (kobliha.PoziceY + kobliha.Velikost > zem2.PoziceY && kobliha.PoziceY + kobliha.Velikost < zem2.PoziceY + zem2.Vyska && kobliha.PoziceX > zem2.PoziceX - kobliha.Velikost && kobliha.PoziceX < zem2.PoziceX + zem2.Sirka)
+                {
+                    vzduch = false;
+                }
+                else if (kobliha.PoziceY + kobliha.Velikost > zem3.PoziceY && kobliha.PoziceY + kobliha.Velikost < zem3.PoziceY + zem3.Vyska && kobliha.PoziceX > zem3.PoziceX - kobliha.Velikost && kobliha.PoziceX < zem3.PoziceX + zem3.Sirka)
+                {
+                    vzduch = false;
+                }
+                else
+                {
+                    vzduch = true;
+                }
+
+                //lava
+                if (kobliha.PoziceY + kobliha.Velikost > lava.PoziceY && kobliha.PoziceX + 50 > 100)
                 {
                     konec = true;
                 }
@@ -297,6 +312,15 @@ namespace Kobliha
                     kobliha.PoziceX = sirkaOkna / 2;
                     cislo_obrazovky = 3;
                 }
+
+                //Platformy
+
+
+                //lava
+                if (kobliha.PoziceY + kobliha.Velikost > lava.PoziceY && kobliha.PoziceX + 50 > 100)
+                {
+                    konec = true;
+                }
             }
 
             if (cislo_obrazovky == 12)
@@ -311,6 +335,15 @@ namespace Kobliha
                     kobliha.PoziceX = sirkaOkna / 2;
                     cislo_obrazovky = 4;
                 }
+                
+                //Platformy
+
+
+                //lava
+                if (kobliha.PoziceY + kobliha.Velikost > lava.PoziceY && kobliha.PoziceX + 50 > 100)
+                {
+                    konec = true;
+                }
             }
         }
        
@@ -320,7 +353,8 @@ namespace Kobliha
             _spriteBatch.Begin();
 
             zem1.VykresliSe(_spriteBatch);
-            zem2.VykresliSe(_spriteBatch);
+            
+
 
             if (cislo_obrazovky == 1)
             {
@@ -393,12 +427,40 @@ namespace Kobliha
 
             if (cislo_obrazovky == 10)
             {
+                lava.VykresliSe(_spriteBatch);
+                zem2.VykresliSe(_spriteBatch);
+                zem3.VykresliSe(_spriteBatch);
                 if (konec == true)
                 {
                     ending2.VykresliSe(_spriteBatch);
                     kobliha.PoziceX = 200;
                 }
+                
+            }
 
+            if (cislo_obrazovky == 11)
+            {
+                lava.VykresliSe(_spriteBatch);
+                if (konec == true)
+                {
+                    ending3.VykresliSe(_spriteBatch);
+                    kobliha.PoziceX = 200;
+                }
+            }
+
+            if (cislo_obrazovky == 12)
+            {
+                lava.VykresliSe(_spriteBatch);
+                if (konec == true)
+                {
+                    ending4.VykresliSe(_spriteBatch);
+                    kobliha.PoziceX = 200;
+                }
+            }
+
+            if (cislo_obrazovky == 13)
+            {
+                lava.VykresliSe(_spriteBatch);
             }
 
             if (konec != true)
