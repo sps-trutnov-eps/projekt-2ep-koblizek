@@ -21,13 +21,14 @@ namespace Kobliha
         private int vyskaOkna = 900;
         private int cislo_obrazovky = 1;
         private bool konec = false;
+        private bool vyhra = false;
         private bool vzduch = true;
         private int rychlost_skoku = 0;
         private int pocet_penez = 0;
         
         Koblizek kobliha;
         NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4, lava;
-        Endingy ending1, ending2, ending3, ending4;
+        Endingy ending1, ending2, ending3, ending4, ending5, ending6;
         Zem zem1, zem2, zem3, zem4, zem5, zem6, zem7, zem8, zem9, zem10, zem11, zem12, zem13, zem14, zem15, zem16, zem17, zem18, zem19, zem20, zem21, zem22, zem23, zem24, zem25, zem26, zem27, zem28, zem29, zem30, zem31, zem32, zem33;
         Penize peniz1, peniz_ikona, peniz2, peniz3, peniz4, peniz5, peniz6;
         
@@ -99,6 +100,10 @@ namespace Kobliha
 
             ending4 = new Endingy(GraphicsDevice, "Content/obrazky/ending4.png", 0, 0);
 
+            ending5 = new Endingy(GraphicsDevice, "Content/obrazky/ending5.png", 0, 0);
+            
+            ending6 = new Endingy(GraphicsDevice, "Content/obrazky/ending6.png", 0, 0);
+            
             lava = new NPC(GraphicsDevice, 100, "Content/obrazky/lava.png", 100, 880);
 
             //PLATFORMY
@@ -289,7 +294,16 @@ namespace Kobliha
                 if (kobliha.PoziceX > liska.PoziceX && kobliha.PoziceX < liska.PoziceX + 90)
                 {
                     if (klavesnice.IsKeyDown(Keys.Space))
-                        cislo_obrazovky = 9;
+                    {
+                        if (pocet_penez == 6)
+                        {
+                            vyhra = true;
+                        }
+                        if (pocet_penez != 6)
+                        {
+                            konec = true;
+                        }
+                    }
                 }
             }
 
@@ -570,8 +584,8 @@ namespace Kobliha
             {
                 
                 dedek.VykresliSe(_spriteBatch);
-                
                 babka.VykresliSe(_spriteBatch);
+                _spriteBatch.DrawString(spriteFont, "Utec pryc od dedka a babky!", new Vector2(650, 500), Color.Black);
                 if (konec == true) 
                 {
                     ending1.VykresliSe(_spriteBatch);
@@ -612,7 +626,17 @@ namespace Kobliha
                 liska.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > liska.PoziceX && kobliha.PoziceX < liska.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Koblizku, koblizku, ja te SNIM! ", new Vector2(400, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku, koblizku, ja te SNIM! zaplat 6 zlataku a ja te necham jit (potvrd mezernikem) ", new Vector2(400, 500), Color.Black);
+                }
+                if (konec)
+                {   
+                  ending5.VykresliSe(_spriteBatch);
+                  kobliha.PoziceX = 200;
+                }
+                if (vyhra)
+                {
+                  ending6.VykresliSe(_spriteBatch);
+                  kobliha.PoziceX = 200;
                 }
             }
 
