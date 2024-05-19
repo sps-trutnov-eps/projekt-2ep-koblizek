@@ -23,13 +23,13 @@ namespace Kobliha
         private bool konec = false;
         private bool vzduch = true;
         private int rychlost_skoku = 0;
-        
+        private int pocet_penez = 0;
         
         Koblizek kobliha;
         NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4, lava;
         Endingy ending1, ending2, ending3, ending4;
         Zem zem1, zem2, zem3;
-        
+        Penize peniz1, peniz_ikona;
         
         //konstruktor
         public Game1()
@@ -106,6 +106,11 @@ namespace Kobliha
             zem1 = new Zem(GraphicsDevice, 0, vyskaOkna - 15, sirkaOkna, 15);
             zem2 = new Zem(GraphicsDevice, 500, 800, 100, 20);
             zem3 = new Zem(GraphicsDevice, 200, 820, 100, 20);
+
+
+            //PENIZKY
+            peniz_ikona = new Penize(GraphicsDevice, 21, "Content/obrazky/penizek.png", 50, 50);
+            peniz1 = new Penize(GraphicsDevice, 21, "Content/obrazky/penizek.png", 500, 850);
         }
 
 
@@ -160,7 +165,7 @@ namespace Kobliha
 
 
 
-
+            //PŘEHAZOVÁNÍ OBRAZOVEK 
 
 
             if (cislo_obrazovky > 1)
@@ -186,6 +191,9 @@ namespace Kobliha
                 }
             }
 
+
+            //INTERAKCE V OBRAZOVKÁCH
+
             if (cislo_obrazovky == 1)
             {
                 if (kobliha.PoziceX > dedek.PoziceX && kobliha.PoziceX < dedek.PoziceX + 70)
@@ -205,6 +213,12 @@ namespace Kobliha
                         cislo_obrazovky = 10;
                         kobliha.PoziceX = 10;
                     } 
+                }
+
+                if (kobliha.PoziceX + kobliha.Velikost > peniz1.PoziceX && kobliha.PoziceX < peniz1.PoziceX + peniz1.Velikost && kobliha.PoziceY + kobliha.Velikost > peniz1.PoziceY && kobliha.PoziceY < peniz1.PoziceY + 26)
+                {
+                    pocet_penez += 1;
+                    peniz1.Zmiz();
                 }
             }
 
@@ -294,6 +308,7 @@ namespace Kobliha
                 }
 
                 //lava
+
                 if (kobliha.PoziceY + kobliha.Velikost > lava.PoziceY && kobliha.PoziceX + 50 > 100)
                 {
                     konec = true;
@@ -353,8 +368,8 @@ namespace Kobliha
             _spriteBatch.Begin();
 
             zem1.VykresliSe(_spriteBatch);
-            
-
+            peniz_ikona.VykresliSe(_spriteBatch);
+            _spriteBatch.DrawString(spriteFont, pocet_penez.ToString(), new Vector2(80, 50), Color.Black);
 
             if (cislo_obrazovky == 1)
             {
@@ -372,9 +387,10 @@ namespace Kobliha
             if (cislo_obrazovky == 2)
             {
                 zajic.VykresliSe(_spriteBatch);
+                peniz1.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > zajic.PoziceX && kobliha.PoziceX < zajic.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku mam pro tebe ukol, spln ho a ziskas odmenu, nespnis ho a ja te sezeru (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku, koblizku, mam pro tebe ukol, spln ho a ziskas odmenu, nespnis ho a sezeru te (potvrd mezernikem)", new Vector2(200, 500), Color.Black);
                 }
             }
 
@@ -383,7 +399,7 @@ namespace Kobliha
                 vlk.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > vlk.PoziceX && kobliha.PoziceX < vlk.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku mam pro tebe ukol, nedas ho a skoncis u me v brise! (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku, koblizku, mam pro tebe ukol, nedas ho a skoncis u me v brise! (potvrd mezernikem)", new Vector2(400, 500), Color.Black);
                 }
             }
 
@@ -392,7 +408,7 @@ namespace Kobliha
                 medved.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > medved.PoziceX && kobliha.PoziceX < medved.PoziceX + 200)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku dam ti ukol, spln ho nebo zemres! (potvrd mezernikem)", new Vector2(400, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku, koblizku, dam ti ukol, spln ho nebo zemres! (potvrd mezernikem)", new Vector2(600, 500), Color.Black);
                 }
             }
 
@@ -401,7 +417,7 @@ namespace Kobliha
                 liska.VykresliSe(_spriteBatch);
                 if (kobliha.PoziceX > liska.PoziceX && kobliha.PoziceX < liska.PoziceX + 120)
                 {
-                    _spriteBatch.DrawString(spriteFont, "Koblizku koblizku ja te SNIM! ", new Vector2(600, 500), Color.Black);
+                    _spriteBatch.DrawString(spriteFont, "Koblizku, koblizku, ja te SNIM! ", new Vector2(400, 500), Color.Black);
                 }
             }
 

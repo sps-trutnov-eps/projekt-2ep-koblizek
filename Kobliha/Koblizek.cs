@@ -10,7 +10,7 @@ namespace Kobliha
         public int PoziceX { get; set; }
         public int PoziceY { get; set; }
         public Vector2 Pozice { get; set; }
-        private int Rychlost { get; set; } = 6;
+        private int Rychlost { get; set; } = 7;
         private int RychlostSkoku { get; set; } = 5;
         private int SkokSilou { get; set; } = 15;
         private bool Skace { get; set; } = false;
@@ -21,7 +21,7 @@ namespace Kobliha
         private bool jeOtocenyDoprava = false;
         private float UhelRotace { get; set; } = 0f;
         private float RychlostKutaleni { get; set; } = 0.2f;
-        private float RychlostRotace { get; set; } = 7f;
+        private float RychlostRotace { get; set; } = 8f;
 
         private bool naZemi = true;
 
