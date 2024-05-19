@@ -636,7 +636,7 @@ namespace Kobliha
                 if (vyhra)
                 {
                   ending6.VykresliSe(_spriteBatch);
-                  kobliha.PoziceX = 200;
+                  kobliha.PoziceY = 2000;
                 }
             }
 
