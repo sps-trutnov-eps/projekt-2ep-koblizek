@@ -21,7 +21,7 @@ namespace Kobliha
         private bool jeOtocenyDoprava = false;
         private float UhelRotace { get; set; } = 0f;
         private float RychlostKutaleni { get; set; } = 0.2f;
-        private float RychlostRotace { get; set; } = 8f;
+        private float RychlostRotace { get; set; } = 9f;
 
         private bool naZemi = true;
 

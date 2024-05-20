@@ -309,12 +309,19 @@ namespace Kobliha
 
             if (cislo_obrazovky == 6)
             {
-
+                
             }
 
             if (cislo_obrazovky == 7)
             {
-
+                if (kobliha.PoziceX > stop2.PoziceX && kobliha.PoziceX < stop2.PoziceX + 120)
+                {
+                    if (klavesnice.IsKeyDown(Keys.Space))
+                    {
+                        cislo_obrazovky = 14;
+                        kobliha.PoziceX = 100;
+                    }
+                }
             }
 
             if (cislo_obrazovky == 8)
@@ -569,6 +576,20 @@ namespace Kobliha
                     konec = true;
                 }
             }
+            if (cislo_obrazovky == 14)
+            {
+                
+                if (kobliha.PoziceX > sirkaOkna - 11)
+                {
+                    kobliha.PoziceX = 400;
+                    cislo_obrazovky = 7;
+                }
+                if (kobliha.PoziceX < 0)
+                {
+                    kobliha.PoziceX = 400;
+                    cislo_obrazovky = 7;
+                }
+            }
         }
        
         protected override void Draw(GameTime gameTime)
@@ -732,6 +753,12 @@ namespace Kobliha
             if (cislo_obrazovky == 13)
             {
                 lava.VykresliSe(_spriteBatch);
+            }
+
+            if (cislo_obrazovky == 14)
+            {
+                zajic.VykresliSe(_spriteBatch);
+                vlk.VykresliSe(_spriteBatch);
             }
 
             if (konec != true)
