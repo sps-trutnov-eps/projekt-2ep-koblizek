@@ -149,7 +149,7 @@ namespace Kobliha
             zem33 = new Zem(GraphicsDevice, 600, 110, 100, 20);
 
             //PENIZKY
-
+            
             peniz_ikona = new Penize(GraphicsDevice, 21, "Content/obrazky/penizek.png", 50, 50);
             peniz1 = new Penize(GraphicsDevice, 21, "Content/obrazky/penizek.png", 600, 610);
             peniz2 = new Penize(GraphicsDevice, 21, "Content/obrazky/penizek.png", 300, 620);
