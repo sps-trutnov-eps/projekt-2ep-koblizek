@@ -35,7 +35,7 @@ namespace Kobliha
 
         public void PohniSe()
         {
-            Pozice = new Vector2(Pozice.X + 1, Pozice.Y);
+            Pozice = new Vector2(Pozice.X + 6, Pozice.Y);
         }
         public void VykresliSe(SpriteBatch vykreslovaciDavka)
         {
