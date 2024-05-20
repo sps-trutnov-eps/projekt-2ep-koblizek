@@ -27,8 +27,8 @@ namespace Kobliha
         private int pocet_penez = 0;
         
         Koblizek kobliha;
-        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4, lava;
-        Endingy ending1, ending2, ending3, ending4, ending5, ending6;
+        NPC dedek, babka, vlk, zajic, medved, liska, stop1, stop2, stop3, stop4, lava, vrtadlo, hovinko;
+        Endingy ending1, ending2, ending3, ending4, ending5, ending6, ending7;
         Zem zem1, zem2, zem3, zem4, zem5, zem6, zem7, zem8, zem9, zem10, zem11, zem12, zem13, zem14, zem15, zem16, zem17, zem18, zem19, zem20, zem21, zem22, zem23, zem24, zem25, zem26, zem27, zem28, zem29, zem30, zem31, zem32, zem33;
         Penize peniz1, peniz_ikona, peniz2, peniz3, peniz4, peniz5, peniz6;
         
@@ -91,6 +91,14 @@ namespace Kobliha
 
             stop4 = new NPC(GraphicsDevice, 100, "Content/obrazky/konec.png",
                 500, vyskaOkna - 600);
+            
+            vrtadlo = new NPC(GraphicsDevice, 100, "Content/obrazky/Vrtadlo1.png",
+                400, vyskaOkna - 600);
+
+            hovinko = new NPC(GraphicsDevice, 100, "Content/obrazky/hovinko.png",
+                800, vyskaOkna - 45);
+            
+            lava = new NPC(GraphicsDevice, 100, "Content/obrazky/lava.png", 100, 880);
 
             ending1 = new Endingy(GraphicsDevice, "Content/obrazky/ending1.png", 0, 0);
 
@@ -104,7 +112,8 @@ namespace Kobliha
             
             ending6 = new Endingy(GraphicsDevice, "Content/obrazky/ending6.png", 0, 0);
             
-            lava = new NPC(GraphicsDevice, 100, "Content/obrazky/lava.png", 100, 880);
+            ending7 = new Endingy(GraphicsDevice, "Content/obrazky/ending7.png", 0, 0);
+            
 
             //PLATFORMY
 
@@ -589,6 +598,11 @@ namespace Kobliha
                     kobliha.PoziceX = 400;
                     cislo_obrazovky = 7;
                 }
+
+                if (kobliha.PoziceX + kobliha.Velikost - 11 > hovinko.PoziceX && kobliha.PoziceX < hovinko.PoziceX + 50)
+                {
+                    konec = true;
+                }
             }
         }
        
@@ -691,6 +705,7 @@ namespace Kobliha
                 zem5.VykresliSe(_spriteBatch);
                 zem6.VykresliSe(_spriteBatch);
                 zem7.VykresliSe(_spriteBatch);
+                _spriteBatch.DrawString(spriteFont, "Skoc do prave zdi, aby jsi odesel z minihry", new Vector2(500, 30), Color.Black);
                 if (konec == true)
                 {
                     ending2.VykresliSe(_spriteBatch);
@@ -715,6 +730,7 @@ namespace Kobliha
                 zem16.VykresliSe(_spriteBatch);
                 zem17.VykresliSe(_spriteBatch);
                 zem18.VykresliSe(_spriteBatch);
+                _spriteBatch.DrawString(spriteFont, "Skoc do prave zdi, aby jsi odesel z minihry", new Vector2(500, 30), Color.Black);
                 if (konec == true)
                 {
                     ending3.VykresliSe(_spriteBatch);
@@ -743,6 +759,7 @@ namespace Kobliha
                 zem31.VykresliSe(_spriteBatch);
                 zem32.VykresliSe(_spriteBatch);
                 zem33.VykresliSe(_spriteBatch);
+                _spriteBatch.DrawString(spriteFont, "Skoc do prave zdi, aby jsi odesel z minihry", new Vector2(500, 30), Color.Black);
                 if (konec == true)
                 {
                     ending4.VykresliSe(_spriteBatch);
@@ -757,8 +774,13 @@ namespace Kobliha
 
             if (cislo_obrazovky == 14)
             {
-                zajic.VykresliSe(_spriteBatch);
-                vlk.VykresliSe(_spriteBatch);
+                hovinko.VykresliSe(_spriteBatch);
+                vrtadlo.VykresliSe(_spriteBatch);
+                if (konec)
+                {
+                    ending7.VykresliSe(_spriteBatch);
+                    kobliha.PoziceY = 2000;
+                }
             }
 
             if (konec != true)

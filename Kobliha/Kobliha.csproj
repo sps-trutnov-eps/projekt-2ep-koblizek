@@ -29,6 +29,8 @@
     <None Remove="Content\obrazky\ending4.png" />
     <None Remove="Content\obrazky\ending5.png" />
     <None Remove="Content\obrazky\ending6.png" />
+    <None Remove="Content\obrazky\ending7.png" />
+    <None Remove="Content\obrazky\hovinko.png" />
     <None Remove="Content\obrazky\Koblizek.png" />
     <None Remove="Content\obrazky\konec.png" />
     <None Remove="Content\obrazky\lava.png" />
@@ -41,6 +43,7 @@
     <None Remove="Content\obrazky\stop.png" />
     <None Remove="Content\obrazky\vlk.png" />
     <None Remove="Content\obrazky\vlk_.png" />
+    <None Remove="Content\obrazky\Vrtadlo1.png" />
     <None Remove="Content\obrazky\zajic.png" />
     <None Remove="Content\Roboto-Medium.ttf" />
   </ItemGroup>
@@ -81,6 +84,12 @@
     <Content Include="Content\obrazky\ending6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\obrazky\ending7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obrazky\hovinko.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\obrazky\Koblizek.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -112,6 +121,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\vlk_.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obrazky\Vrtadlo1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\obrazky\zajic.png">
